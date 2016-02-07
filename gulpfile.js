@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
-  livereload = require('gulp-livereload'),
+  livereload = require('gulp-livereload')
 
 gulp.task('watch', function() {
   gulp.watch('./public/css/*.scss', ['sass']);
