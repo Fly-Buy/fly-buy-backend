@@ -33,6 +33,24 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// user session
+app.use(session({
+  store: new pgSession({
+    pg : pg,                                                    // Use global pg-module
+    conString : process.env.DATABASE_URL + "?ssl=true",        // Connect using something else than default DATABASE_URL env variable
+    tableName : 'session'                                      // Use another table-name than the default "session" one
+  }),
+  saveUninitialized: true,
+  secret: process.env.SESS_SECRET,
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
+
+
+// user authenication
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
 
 /// catch 404 and forward to error handler
