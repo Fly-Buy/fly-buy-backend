@@ -16,6 +16,7 @@ var pgSession = require('connect-pg-simple')(session);
 var passport = require('./local_modules/passport_config');
 
 var routes = require('./routes/index');
+var auth = require('./routes/auth');
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/auth', auth);
 app.use('/', routes);
 
 /// catch 404 and forward to error handler
