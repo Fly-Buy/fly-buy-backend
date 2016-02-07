@@ -7,6 +7,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
 
+var dotenv = require('dotenv').load();
+
+var pg = require('pg');
+var session = require('express-session');
+var pgSession = require('connect-pg-simple')(session);
+
+var passport = require('./local_modules/passport_config');
+
 var routes = require('./routes/index');
 
 var app = express();
