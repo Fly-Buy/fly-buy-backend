@@ -27,7 +27,7 @@ router.get('/', function(req, res){
 
 router.use('/airlines', airlines);
 router.use('/airports', airports);
-router.use('/airports', flights);
+router.use('/flights', flights);
 
 router.get('/test', ensureAuthenticated, function(req, res){
   res.json({signedIn: 'yes'});
