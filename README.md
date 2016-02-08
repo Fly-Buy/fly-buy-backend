@@ -10,4 +10,4 @@ Email: email@gmail.com
 Password: ••••••••
 ```
   4. With environment variables in ./.profile.d/setenv.sh in terminal run:
-``` cf push ```
+```bash cf push ```
