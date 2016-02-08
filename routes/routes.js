@@ -3,6 +3,7 @@ var router = express.Router();
 var airlines = require('./airlines');
 var airports = require('./airports');
 var flights = require('./flights');
+var knex = require('../local_modules/knex');
 
 // run authentication
 function ensureAuthenticated(req, res, next) {
