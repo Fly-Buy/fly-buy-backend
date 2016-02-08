@@ -14,7 +14,7 @@ applications:
     DB_PASS: hucKkcOW52L3Q1KR
     DB_DATABASE: fly-buy
     NODE_ENV: development
-    GOOGLE_CALLBACK: http://127.0.0.1:3000/auth/google/callback
+    GOOGLE_CALLBACK: https://fly-buy.cfapps.io/auth/google/callback
     G_CLIENTID: 842755919108-83dama3jo79d6gj69vakg7k1ib8nk7ac.apps.googleusercontent.com
     G_CLIENTSECRET: NRoZc6keYXI4OWyeU71EICSn
-    FB_CALLBACK: http://127.0.0.1:3000/auth/facebook/callback
+    FB_CALLBACK: https://fly-buy.cfapps.io/auth/facebook/callback

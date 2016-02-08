@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+var airlines = require('./airlines');
+var airports = require('./airports');
 
 // run authentication
 function ensureAuthenticated(req, res, next) {
@@ -22,7 +24,10 @@ router.get('/', function(req, res){
   res.json({ title: 'Express' });
 });
 
-router.use('/test', ensureAuthenticated, function(req, res){
+router.use('/airlines', airlines);
+router.use('/airports', airports);
+
+router.get('/test', ensureAuthenticated, function(req, res){
   res.json({signedIn: 'yes'});
 })
 
