@@ -40,8 +40,8 @@ function insertUser(userObj) {
   .then(function(user){
     if (user.length === 0) {
       return knex('users').insert({
-        first_name:   userObj.displayName,
-        last_name:    userObj.displayName,
+        first_name:   userObj.displayName.split(' ')[0],
+        last_name:    userObj.displayName.split(' ')[1],
         oauthid:      userObj.id,
         provider:     userObj.provider,
         user_image:   userObj.photos[0].value,

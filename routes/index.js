@@ -4,8 +4,13 @@ var router = express.Router();
 // run authentication
 function ensureAuthenticated(req, res, next) {
   console.log("ensureAuthenticated",req.isAuthenticated());
-  if (process.env.testing == 'true' || (req.isAuthenticated() && userEntryCheck(req.user.id) >= 1)) { return next(); }
-  res.send("Please login.");
+  if (process.env.testing == 'true' || req.isAuthenticated()) {
+    if (process.env.testing == 'true' || userEntryCheck(req.user.id) >= 1) {
+      return next();
+    }
+    res.redirect('/') // update this to redirect to first entry page when created (this likely will be a front-side redirect)
+  }
+  res.send("Sign-in failed.");
 }
 
 // this will be the pg/knex query on flights table returning # of rows
