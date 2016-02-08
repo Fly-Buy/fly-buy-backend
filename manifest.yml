@@ -1,6 +1,7 @@
 ---
 applications:
 - name: fly-buy
+  buildpack: nodejs_buildpack
   command: node ./bin/www
   instances: 1
   host: fly-buy
