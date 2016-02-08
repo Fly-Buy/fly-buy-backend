@@ -17,6 +17,8 @@ var passport = require('./local_modules/passport_config');
 
 var routes = require('./routes/routes');
 var auth = require('./routes/auth');
+var airlines = require('./routes/airlines');
+var airports = require('./routes/airports');
 
 var app = express();
 
@@ -57,6 +59,8 @@ app.use(passport.session());
 
 app.use('/auth', auth);
 app.use('/', routes);
+app.use('/airlines', airlines);
+app.use('/airports', airports);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -69,7 +73,6 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
