@@ -15,7 +15,7 @@ var pgSession = require('connect-pg-simple')(session);
 
 var passport = require('./local_modules/passport_config');
 
-var routes = require('./routes/index');
+var routes = require('./routes/routes');
 var auth = require('./routes/auth');
 
 var app = express();
