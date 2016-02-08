@@ -9,6 +9,7 @@ var exphbs  = require('express-handlebars');
 
 var routes = require('./routes/index');
 var airlines = require('./routes/airlines');
+var airports = require('./routes/airports');
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/airlines', airlines);
+app.use('/airports', airports);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

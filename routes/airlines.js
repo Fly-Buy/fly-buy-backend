@@ -9,5 +9,13 @@ router.get('/', function(req, res){
   })
 })
 
+router.get('/:name', function(req, res){
+  knex('airlines')
+  .whereRaw('LOWER(name) LIKE ?', '%' + req.params.name.toLowerCase()+'%')
+  .then(function(airlines){
+    res.json(airlines);
+  })
+})
+
 
 module.exports = router;
