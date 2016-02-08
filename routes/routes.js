@@ -18,7 +18,12 @@ function ensureAuthenticated(req, res, next) {
 
 // this will be the pg/knex query on flights table returning # of rows
 function userEntryCheck(userID){
-  return 1;  // temp until function is written
+  return knex('flights')
+    .where('user_id', userID)
+    .count('id')
+    .then(function(userFlightCount){
+      return +userFlightCount[0].count;
+    })
 }
 
 router.get('/', function(req, res){
