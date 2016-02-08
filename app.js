@@ -7,7 +7,16 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
 
-var routes = require('./routes/index');
+var dotenv = require('dotenv').load();
+
+var pg = require('pg');
+var session = require('express-session');
+var pgSession = require('connect-pg-simple')(session);
+
+var passport = require('./local_modules/passport_config');
+
+var routes = require('./routes/routes');
+var auth = require('./routes/auth');
 var airlines = require('./routes/airlines');
 var airports = require('./routes/airports');
 
@@ -27,6 +36,28 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// user session
+app.use(session({
+  store: new pgSession({
+    pg : pg,                                                    // Use global pg-module
+    conString : process.env.DATABASE_URL + "?ssl=true",        // Connect using something else than default DATABASE_URL env variable
+    tableName : 'session'                                      // Use another table-name than the default "session" one
+  }),
+  saveUninitialized: true,
+  secret: process.env.SESS_SECRET,
+  resave: false,
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    secure: true
+  }
+}));
+
+
+// user authenication
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/auth', auth);
 app.use('/', routes);
 app.use('/airlines', airlines);
 app.use('/airports', airports);

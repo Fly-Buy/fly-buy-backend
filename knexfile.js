@@ -1,13 +1,24 @@
+var dotenv = require('dotenv').load();
+
 module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/fb'
+    connection: {
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_DATABASE
+    }
   },
 
   production: {
     client: 'pg',
-    connection: 'postgres://xzohfnlzxudhxr:ppzxBTyCO46jA2B5KCrfuT020g@ec2-107-21-218-93.compute-1.amazonaws.com:5432/d9qflmp2hvbc0j?ssl=true'
+    connection: process.env.DATABASE_URL + "?ssl=true",
+    pool: {
+      min: 2,
+      max: 10
+    }
   }
 
 };
