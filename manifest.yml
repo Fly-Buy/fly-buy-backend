@@ -5,16 +5,3 @@ applications:
   command: node ./bin/www
   instances: 1
   host: fly-buy
-  env:
-    DATABASE_URL: postgres://xzohfnlzxudhxr:ppzxBTyCO46jA2B5KCrfuT020g@ec2-107-21-218-93.compute-1.amazonaws.com:5432/d9qflmp2hvbc0j?ssl=true
-    DEV_DATABASE_URL: postgres://flyride_admin:hucKkcOW52L3Q1KR@huber007.dyndns.org:5432/fly-buy
-    SESS_SECRET: mXL7BBq87TUk88N9
-    DB_HOST: huber007.dyndns.org
-    DB_USER: flyride_admin
-    DB_PASS: hucKkcOW52L3Q1KR
-    DB_DATABASE: fly-buy
-    NODE_ENV: development
-    GOOGLE_CALLBACK: https://fly-buy.cfapps.io/auth/google/callback
-    G_CLIENTID: 842755919108-83dama3jo79d6gj69vakg7k1ib8nk7ac.apps.googleusercontent.com
-    G_CLIENTSECRET: NRoZc6keYXI4OWyeU71EICSn
-    FB_CALLBACK: https://fly-buy.cfapps.io/auth/facebook/callback
