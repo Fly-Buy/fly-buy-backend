@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var knex = require('../db/knex');
+var knex = require('../local_modules/knex');
+
 
 router.get('/', function(req, res){
   knex('flights').then(function(flights){
@@ -26,5 +27,33 @@ router.get('/user/:userID', function(req, res){
   })
 })
 
+router.post('/', function(req, res){
+  knex('flights').insert({
+    user_id: request.body.user_id,
+    flight_date: request.body.flight_date,
+    purchase_date: request.body.purchase_date,
+    flight_number: request.body.flight_number,
+    price_paid: request.body.price_paid,
+    purchase_location: request.body.purchase_location,
+    departure_airport_id: request.body.departure_airport_id,
+    arrival_airport_id: request.body.arrival_airport_id,
+    airline_id: request.body.airline_id
+  })
+})
+
+router.put('/:id', function(req, res){
+  knex('flights').where('id', req.params.id)
+  .update({
+    flight_date: request.body.flight_date,
+    purchase_date: request.body.purchase_date,
+    flight_number: request.body.flight_number,
+    price_paid: request.body.price_paid,
+    purchase_location: request.body.purchase_location,
+    departure_airport_id: request.body.departure_airport_id,
+    arrival_airport_id: request.body.arrival_airport_id,
+    airline_id: request.body.airline_id,
+    suspect: request.body.suspect
+  })
+})
 
 module.exports = router;
