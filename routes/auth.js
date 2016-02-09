@@ -5,7 +5,6 @@ var knex = require('../local_modules/knex');
 
 // auth routes
 
-
 // google
 router.get('/google',
   passport.authenticate('google', { scope: 'https://www.googleapis.com/auth/plus.login' }));
