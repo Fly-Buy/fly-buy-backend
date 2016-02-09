@@ -14,7 +14,7 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/shit' }),
   function(req, res) {
     insertUser(req.user);
-    res.redirect('/test');
+    res.redirect('/#/firstflight');
   });
 
 // facebook
@@ -31,7 +31,7 @@ router.get('/facebook/callback',
 // app logout
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/#/firstflight');
 });
 
 

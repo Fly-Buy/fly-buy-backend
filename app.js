@@ -12,6 +12,7 @@ var pg = require('pg');
 var session = require('express-session');
 var pgSession = require('connect-pg-simple')(session);
 
+var cors = cors = require('cors');
 var passport = require('./local_modules/passport_config');
 
 var routes = require('./routes/routes');
@@ -25,6 +26,7 @@ app.locals.ENV_DEVELOPMENT = env == 'development';
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
