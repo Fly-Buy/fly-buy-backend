@@ -23,13 +23,13 @@ router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/shit' }),
   function(req, res) {
     insertUser(req.user);
-    res.redirect('/test');
+    res.redirect('/#/firstflight');
   });
 
 // app logout
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/#/firstflight');
+  res.redirect('/');
 });
 
 
