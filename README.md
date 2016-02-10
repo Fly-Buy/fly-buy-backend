@@ -1,5 +1,26 @@
 ### Branch off of dev please.
 ---
+## Updating submodule
+  1. If you just cloned the repo
+```bash
+$ git submodule init
+```
+  2. To pull down updates to dev (or current branch specified in .gitmodules)
+```bash
+$ git submodule update --remote
+```
+
+## To run locally (temporary, will be updated)
+  1. In one shell (runs the API back-end)
+```bash
+$ gulp
+```
+  2. In another shell window (relative to this project directory)
+```bash
+$ cd ./fly-by-frontend
+$ grunt serve
+```
+
 ## CF Instructions
   1. Create an account here: [http://run.pivotal.io/](http://run.pivotal.io/)
   2. Download and install CLI tool: [Mac OSX CF CLI tool](https://cli.run.pivotal.io/stable?release=macosx64&source=pws)
