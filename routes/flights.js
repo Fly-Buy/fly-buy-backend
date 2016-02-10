@@ -30,30 +30,30 @@ router.get('/user/:userID', function(req, res){
 router.post('/', function(req, res){
   console.log(req.body);
   knex('flights').insert({
-    user_id: request.body.user_id,
-    flight_date: request.body.flight_date,
-    purchase_date: request.body.purchase_date,
-    flight_number: request.body.flight_number,
-    price_paid: request.body.price_paid,
-    purchase_location: request.body.purchase_location,
-    departure_airport_id: request.body.departure_airport_id,
-    arrival_airport_id: request.body.arrival_airport_id,
-    airline_id: request.body.airline_id
+    user_id: req.body.user_id,
+    flight_date: req.body.flight_date,
+    purchase_date: req.body.purchase_date,
+    flight_number: req.body.flight_number,
+    price_paid: req.body.price_paid,
+    purchase_location: req.body.purchase_location,
+    departure_airport_id: req.body.departure_airport_id,
+    arrival_airport_id: req.body.arrival_airport_id,
+    airline_id: req.body.airline_id
   })
 })
 
 router.put('/:id', function(req, res){
   knex('flights').where('id', req.params.id)
   .update({
-    flight_date: request.body.flight_date,
-    purchase_date: request.body.purchase_date,
-    flight_number: request.body.flight_number,
-    price_paid: request.body.price_paid,
-    purchase_location: request.body.purchase_location,
-    departure_airport_id: request.body.departure_airport_id,
-    arrival_airport_id: request.body.arrival_airport_id,
-    airline_id: request.body.airline_id,
-    suspect: request.body.suspect
+    flight_date: req.body.flight_date,
+    purchase_date: req.body.purchase_date,
+    flight_number: req.body.flight_number,
+    price_paid: req.body.price_paid,
+    purchase_location: req.body.purchase_location,
+    departure_airport_id: req.body.departure_airport_id,
+    arrival_airport_id: req.body.arrival_airport_id,
+    airline_id: req.body.airline_id,
+    suspect: req.body.suspect
   })
 })
 
