@@ -9,6 +9,7 @@ $ git submodule init
 ```bash
 $ git submodule update --remote
 ```
+  3. More info on git submodules here: [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
 ## To run locally (temporary, will be updated)
   1. In one shell (runs the API back-end)
