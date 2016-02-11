@@ -1,11 +1,95 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title>Fly-Buy Home</title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.24426e41.css"> </head> <body ng-app="flyBuyApp"> <!--[if lte IE 8]>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fly-Buy Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/bootstrap.css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/custom.css -->
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/firstflight.css">
+    <link rel="stylesheet" href="styles/hompageMediaQueries.css">
+    <link rel="stylesheet" href="styles/firstflightMediaQueries.css">
+    <link rel="stylesheet" href="/styles/typeahead.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="flyBuyApp">
+    <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- NAVIGATION --> <div class="header"> <nav class="nav-bar"> <div class="nav-bar-left"> <a ng-href="#/"> <p class="nav-text">Fly-Buy</p> </a> </div> <div class="nav-bar-right"> <a ng-href="#/firstflight"> <p class="nav-text">First Flight</p> </a> <!-- <a href='/timeline'>
+    <![endif]-->
+
+    <!-- NAVIGATION -->
+    <div class="header">
+      <nav class='nav-bar'>
+        <div class='nav-bar-left'>
+          <a ng-href='#/'>
+            <p class='nav-text'>Fly-Buy</p>
+          </a>
+        </div>
+        <div class='nav-bar-right'>
+          <a ng-href='#/firstflight'>
+            <p class='nav-text'>First Flight</p>
+          </a>
+          <!-- <a href='/timeline'>
             <p class='nav-text'>Log In</p>
-          </a> --> </div> </nav> </div> <div class="container"> <div ng-view=""></div> </div> <!-- FOOTER --> <footer> <div class="footer-left"> <p>This site was made with love by Chirs H., Brian H., and Alex B. </p></div> <div class="footer-center"> <p>All rights Reserved. Fly-Buy is copywrite, 2016. </p></div> <div class="footer-right"> <ul class="footer-nav"> <li class="footer-link">About</li><li> </li><li class="footer-link">Product Features</li><li> </li><li class="footer-link">Log In</li><li> </li></ul> </div> </footer> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+          </a> -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+    <div ng-view=""></div>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.cd351089.js"></script> <script src="scripts/scripts.50bfbc36.js"></script> </body> </html>
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/firstflight.js"></script>
+        <script src="scripts/controllers/dashboard.js"></script>
+        <script src="scripts/services/api.js"></script>
+        <script src="scripts/directives/validairport.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

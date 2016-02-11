@@ -1,0 +1,50 @@
+@media screen and (max-width: 850px) {
+  /* line 2, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container {
+    display: flex;
+    flex-direction: column;
+    width: 100% auto;
+    height: 100vh;
+  }
+  /* line 7, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane {
+    width: 100%;
+    background-color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 12, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane h1 {
+    height: 200px;
+    margin-top: 10%;
+  }
+  /* line 16, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane h2 {
+    height: 200px;
+  }
+  /* line 19, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane img {
+    height: 200px;
+  }
+  /* line 23, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 28, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane .first-flight-form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+  }
+  /* line 33, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane .first-flight-form input {
+    width: 70%;
+    margin: auto;
+    height: 50px;
+    margin-top: 4%;
+  }
+}
