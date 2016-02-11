@@ -64,24 +64,30 @@ router.put('/:id', function(req, res){
 //   row_data: []
 // }
 
-router.get('/dashboard', function(req, res){
+router.post('/dashboard', function(req, res){
   var properties = [
     "flight_number",
     "departure_airport_id",
     "arrival_airport_id",
     "airline_id"
-  ]; 
+  ];
   var flights = knex('flights');
   // Initial where clause because andWhere can only come after a where clause
   flights.where("id", ">", 0);
   properties.forEach(function(property) {
-    if(req.body.hasOwnProperty(property) && req.body[property] != null) {
+
+    if(req.body.hasOwnProperty(property) && req.body[property] != null
+      && req.body[property] != 'undefined') {
       flights.andWhere(property, req.body[property]);
     }
   });
   // Coerce the query builder into a promise
   flights.then(function(flights){
-    res.json(flights);
+    var flightPrices = []
+    flights.forEach((flight)=>{
+      flightPrices.push(flight.price_paid)
+    })
+    res.json(flightPrices);
   }).catch(function(err){
     throw err;
   });
