@@ -66,4 +66,41 @@ router.put('/:id', function(req, res){
   })
 })
 
+// routes to feed dynamic user input on dashboard
+// return {
+//   chart01_data: [],
+//   chart02_data: [],
+//   chart03_data: [],
+//   row_data: []
+// }
+
+router.post('/dashboard', function(req, res){
+  var properties = [
+    "flight_number",
+    "departure_airport_id",
+    "arrival_airport_id",
+    "airline_id"
+  ];
+  var flights = knex('flights');
+  // Initial where clause because andWhere can only come after a where clause
+  flights.where("id", ">", 0);
+  properties.forEach(function(property) {
+
+    if(req.body.hasOwnProperty(property) && req.body[property] != null
+      && req.body[property] != 'undefined') {
+      flights.andWhere(property, req.body[property]);
+    }
+  });
+  // Coerce the query builder into a promise
+  flights.then(function(flights){
+    var flightPrices = []
+    flights.forEach((flight)=>{
+      flightPrices.push(flight.price_paid)
+    })
+    res.json(flightPrices);
+  }).catch(function(err){
+    throw err;
+  });
+})
+
 module.exports = router;
