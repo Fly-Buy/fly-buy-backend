@@ -12,7 +12,7 @@ function ensureAuthenticated(req, res, next) {
     if (process.env.testing == 'true' || userEntryCheck(req.user.id) >= 1) {
       return next();
     }
-    res.redirect('/') // update this to redirect to first entry page when created (this likely will be a front-side redirect)
+    res.redirect('/#/firstflight') // update this to redirect to first entry page when created (this likely will be a front-side redirect)
   }
   res.send("Sign-in failed.");
 }

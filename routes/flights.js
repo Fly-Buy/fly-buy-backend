@@ -33,18 +33,21 @@ router.post('/', function(req, res){
     user_id: req.body.user_id,
     flight_date: req.body.flight_date,
     purchase_date: req.body.purchase_date,
-    flight_number: parseInt(req.body.flight_number),
+    flight_number: (req.body.flight_number ? parseInt(req.body.flight_number) : null),
     price_paid: parseInt(req.body.price_paid),
-    purchase_location: req.body.purchase_location,
+    purchase_location: (req.body.purchase_location ? req.body.purchase_location : null),
     departure_airport_id: parseInt(req.body.departure_airport_id),
     arrival_airport_id: parseInt(req.body.arrival_airport_id),
-    airline_id: parseInt(req.body.airline_id)
+    airline_id: (req.body.airline_id ? parseInt(req.body.airline_id) : null),
+    suspect: req.body.suspect
   })
   .then(function(result){
     console.log(result);
+    res.json(result);
   })
   .catch(function(error) {
     console.error(error);
+    res.json(error);
   });
 })
 
