@@ -38,7 +38,7 @@ router.post('/', function(req, res){
     purchase_location: (req.body.purchase_location ? req.body.purchase_location : null),
     departure_airport_id: parseInt(req.body.departure_airport_id),
     arrival_airport_id: parseInt(req.body.arrival_airport_id),
-    airline_id: parseInt(req.body.airline_id),
+    airline_id: (req.body.airline_id ? parseInt(req.body.airline_id) : null),
     suspect: req.body.suspect
   })
   .then(function(result){
