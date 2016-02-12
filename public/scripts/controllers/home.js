@@ -8,7 +8,13 @@
  * Controller of the flyBuyApp
  */
 angular.module('flyBuyApp')
-  .controller('HomeCtrl', function () {
+  .controller('HomeCtrl', function ($window, apihost) {
     // var that = this;
-    this.test = 'Balls deep';
+    this.gLogin = function(){
+      $window.location.href = apihost + '/auth/google';
+    };
+
+    this.logout = function(){
+      $window.location.href = apihost + '/auth/logout';
+    };
   });

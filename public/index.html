@@ -31,7 +31,7 @@
     <![endif]-->
 
     <!-- NAVIGATION -->
-    <div class="header">
+    <div class="header" ng-controller="NavCtrl">
       <nav class='nav-bar'>
         <div class='nav-bar-left'>
           <a ng-href='#/'>
@@ -42,14 +42,14 @@
           <a ng-href='#/firstflight'>
             <p class='nav-text'>First Flight</p>
           </a>
-          <!-- <a href='/timeline'>
-            <p class='nav-text'>Log In</p>
-          </a> -->
+          <a ng-href= "{{apihost}}/auth/logout">
+            <p class='nav-text'>Logout</p>
+          </a>
         </div>
       </nav>
     </div>
 
-    <div class="container">
+    <div class="">
     <div ng-view=""></div>
     </div>
 
@@ -90,6 +90,7 @@
         <script src="scripts/controllers/dashboard.js"></script>
         <script src="scripts/services/api.js"></script>
         <script src="scripts/directives/validairport.js"></script>
+        <script src="scripts/controllers/nav.js"></script>
         <!-- endbuild -->
 </body>
 </html>

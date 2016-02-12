@@ -12,7 +12,11 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/shit' }),
   function(req, res) {
     insertUser(req.user);
-    res.redirect('/#/firstflight');
+    if (userEntryCheck(req.user.id) === 1) {
+      res.redirect(process.env.FRONT_END + '/#/dashboard');
+    } else {
+      res.redirect(process.env.FRONT_END + '/#/firstflight');
+    }
   });
 
 // facebook
@@ -29,7 +33,7 @@ router.get('/facebook/callback',
 // app logout
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect(process.env.FRONT_END + '/');
 });
 
 
@@ -56,6 +60,16 @@ function insertUser(userObj) {
   .catch(function(error){
     console.error(error);
   })
+}
+
+// this is the pg/knex query on flights table returning # of rows
+function userEntryCheck(userID){
+  return knex('flights')
+    .where('user_id', userID)
+    .count('id')
+    .then(function(userFlightCount){
+      return +userFlightCount[0].count;
+    })
 }
 
 module.exports = router;
