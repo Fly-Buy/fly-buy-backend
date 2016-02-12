@@ -10,10 +10,10 @@
 angular.module('flyBuyApp')
   .service('api', function ($resource, $http, apihost) {
 
-    var airlines = $resource('http://' + apihost + '/airlines');
-    var airports = $resource('http://' + apihost + '/airports');
-    var Flight = $resource('http://' + apihost + '/flights');
-    var UserFlights = $resource('http://' + apihost + '/user/:userID', {userID: '@id'});
+    var airlines = $resource(apihost + '/airlines');
+    var airports = $resource(apihost + '/airports');
+    var Flight = $resource(apihost + '/flights');
+    var UserFlights = $resource(apihost + '/user/:userID', {userID: '@id'});
 
 
     return {

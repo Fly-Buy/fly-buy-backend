@@ -43,4 +43,4 @@ angular
         redirectTo: '/'
       });
   })
-  .constant('apihost', '127.0.0.1:3000');
+  .constant('apihost', 'https://fly-buy.cfapps.io');
