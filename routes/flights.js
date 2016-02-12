@@ -70,8 +70,7 @@ router.put('/:id', function(req, res){
   })
     console.error(error);
     res.json(error);
-  });
-})
+});
 
 router.post('/dashboard', function(req, res){
   var dashboard = {
@@ -102,8 +101,6 @@ router.post('/dashboard', function(req, res){
     res.json(dashboard);
   })
 })
-
-module.exports = router;
 
 router.post('/dashboard/chart2', function(req, res){
   var dashboard = {
@@ -164,3 +161,5 @@ router.post('/dashboard/chart3', function(req,res){
     res.json("work in progress")
   })
 })
+
+module.exports = router;
