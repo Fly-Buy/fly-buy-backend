@@ -5,7 +5,7 @@ var gulp = require('gulp'),
   babel = require('gulp-babel');
 
 gulp.task('watch', function() {
-  gulp.watch('./public/css/*.scss', ['sass']);
+  gulp.watch('./routes/es2015/*.js', ['babel']);
 });
 
 gulp.task('babel', () => {
