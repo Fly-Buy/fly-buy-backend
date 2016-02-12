@@ -1,0 +1,135 @@
+/* ====================================
+        >>>>  MEDIA QUERIES  <<<<
+   ==================================== */
+@media screen and (max-width: 850px) {
+  /* line 8, ../../app/styles/hompageMediaQueries.scss */
+  .contact {
+    color: white;
+    width: 72%;
+    margin: auto;
+    height: 200px;
+    background: linear-gradient(to right, transparent, #62a0dc);
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+  }
+  /* line 17, ../../app/styles/hompageMediaQueries.scss */
+  .contact h3 {
+    font-weight: 200;
+    padding: 10%;
+  }
+  /* line 21, ../../app/styles/hompageMediaQueries.scss */
+  .contact button {
+    width: 90%;
+    font-size: 1em;
+  }
+}
+/* ====================================
+        >>>>  MEDIA QUERIES  <<<<
+   ==================================== */
+@media screen and (max-width: 650px) {
+  /* line 38, ../../app/styles/hompageMediaQueries.scss */
+  .brand-svg {
+    height: 40%;
+    width: 40%;
+    margin: auto;
+    margin-top: 5%;
+  }
+
+  /* line 45, ../../app/styles/hompageMediaQueries.scss */
+  .nav-bar .nav-bar-right {
+    width: 20%;
+    margin-left: 10%;
+  }
+  /* line 51, ../../app/styles/hompageMediaQueries.scss */
+  .nav-bar .nav-bar-left {
+    margin-left: 10%;
+    width: 60%;
+  }
+
+  /* line 56, ../../app/styles/hompageMediaQueries.scss */
+  .about {
+    display: block;
+    background: transparent;
+    width: 100%;
+  }
+  /* line 60, ../../app/styles/hompageMediaQueries.scss */
+  .about .about-content {
+    width: 90%;
+    margin: 5%;
+  }
+
+  /* line 70, ../../app/styles/hompageMediaQueries.scss */
+  header .header-content h2 {
+    font-size: 1.5em;
+    line-height: 1.25em;
+  }
+
+  /* line 78, ../../app/styles/hompageMediaQueries.scss */
+  .product-features {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5%;
+  }
+  /* line 83, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-one {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 87, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-one .feature-image {
+    margin: 5%;
+    background-image: url("../images/graph.png");
+  }
+  /* line 92, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-two {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 96, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-two .feature-image {
+    margin: 5%;
+    background-image: url("../images/d3.png");
+  }
+  /* line 101, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-three {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 105, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-three .feature-image {
+    margin: 5%;
+    background-image: url("../images/d3_3.png");
+  }
+
+  /* line 111, ../../app/styles/hompageMediaQueries.scss */
+  .feature-text {
+    width: 90%;
+  }
+
+  /* line 117, ../../app/styles/hompageMediaQueries.scss */
+  .contact {
+    width: 90%;
+  }
+
+  /* line 123, ../../app/styles/hompageMediaQueries.scss */
+  footer {
+    flex-direction: column;
+  }
+  /* line 125, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-left {
+    width: 80%;
+  }
+  /* line 128, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-right {
+    width: 80%;
+  }
+  /* line 131, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-center {
+    width: 80%;
+  }
+}

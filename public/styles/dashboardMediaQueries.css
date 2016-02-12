@@ -1,0 +1,33 @@
+@media screen and (max-width: 850px) {
+  /* line 2, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 7, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .left-input-bar {
+    width: 100%;
+    height: 100%;
+  }
+  /* line 11, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .left-input-bar .left-input-form input {
+    height: 40px;
+  }
+  /* line 17, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container {
+    width: 100%;
+    height: 900px;
+  }
+  /* line 20, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container .graph-container {
+    width: 100%;
+    height: 100%;
+  }
+  /* line 24, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container .data-table {
+    width: 100%;
+    height: 400px;
+  }
+}

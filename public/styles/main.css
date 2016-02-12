@@ -1,0 +1,805 @@
+/* line 1, ../../app/styles/dashboard.scss */
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+/* line 10, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar {
+  width: 400px;
+  height: 100vh;
+  background-color: #e1e1e1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+/* line 17, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .input-bar-header {
+  margin: 5%;
+  margin-top: 5%;
+  font-size: 1.5em;
+}
+/* line 25, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .left-input-form {
+  margin-top: 5%;
+}
+/* line 27, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .left-input-form .enter-flight {
+  display: felx;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.25em;
+  height: 50px;
+  background-color: #424242;
+  border: none;
+}
+/* line 37, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .left-input-form input {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+  height: 50px;
+  border: 1px solid black;
+}
+/* line 49, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: auto;
+  margin-top: 1px;
+}
+/* line 55, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .search-button {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: white;
+  margin: auto;
+  height: 50px;
+  justify-content: center;
+}
+/* line 63, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .search-button button {
+  border: none;
+}
+/* line 67, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .add-flight-button {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #ccc;
+  height: 50px;
+  justify-content: center;
+}
+/* line 74, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .add-flight-button button {
+  border: none;
+}
+/* line 83, ../../app/styles/dashboard.scss */
+.dashboard .data-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* line 91, ../../app/styles/dashboard.scss */
+.dashboard .data-container .graph-container {
+  display: flex;
+  height: 60vh;
+  background-color: #ccc;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+/* line 99, ../../app/styles/dashboard.scss */
+.dashboard .data-container .graph-container .histogram {
+  margin-top: 500px;
+}
+/* line 102, ../../app/styles/dashboard.scss */
+.dashboard .data-container .graph-container rect {
+  fill: steelblue;
+  stroke: white;
+}
+/* line 106, ../../app/styles/dashboard.scss */
+.dashboard .data-container .graph-container line {
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+/* line 114, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table {
+  height: 40vh;
+  background-color: white;
+  width: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+}
+/* line 121, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table .table-header {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  width: 100%;
+  background-color: #e1e1e1;
+  height: 25px;
+  position: fixed;
+  margin-top: -25px;
+}
+/* line 130, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table .table-header .column {
+  flex-wrap: wrap;
+  margin-right: 5%;
+  margin-left: 2%;
+}
+
+@media screen and (max-width: 850px) {
+  /* line 2, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 7, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .left-input-bar {
+    width: 100%;
+    height: 100%;
+  }
+  /* line 11, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .left-input-bar .left-input-form input {
+    height: 40px;
+  }
+  /* line 17, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container {
+    width: 100%;
+    height: 900px;
+  }
+  /* line 20, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container .graph-container {
+    width: 100%;
+    height: 100%;
+  }
+  /* line 24, ../../app/styles/dashboardMediaQueries.scss */
+  .dashboard .data-container .data-table {
+    width: 100%;
+    height: 400px;
+  }
+}
+/* line 1, ../../app/styles/firstflight.scss */
+.first-flight-container {
+  display: flex;
+  flex-direction: row;
+  width: 100% auto;
+  height: 100vh;
+}
+/* line 6, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane {
+  width: 50%;
+  background-color: #e1e1e1;
+  display: flex;
+  flex-direction: column;
+}
+/* line 11, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane h1 {
+  height: 300px;
+  margin-top: 20%;
+}
+/* line 15, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane h2 {
+  height: 300px;
+}
+/* line 18, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane img {
+  height: 300px;
+}
+/* line 22, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane {
+  width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+/* line 27, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+/* line 32, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form input {
+  width: 60%;
+  margin: auto;
+  height: 50px;
+}
+/* line 37, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form button {
+  height: 50px;
+}
+
+/* ====================================
+        >>>>  MEDIA QUERIES  <<<<
+   ==================================== */
+@media screen and (max-width: 850px) {
+  /* line 8, ../../app/styles/hompageMediaQueries.scss */
+  .contact {
+    color: white;
+    width: 72%;
+    margin: auto;
+    height: 200px;
+    background: linear-gradient(to right, transparent, #62a0dc);
+    align-items: center;
+    flex-direction: column;
+    margin-top: 5%;
+  }
+  /* line 17, ../../app/styles/hompageMediaQueries.scss */
+  .contact h3 {
+    font-weight: 200;
+    padding: 10%;
+  }
+  /* line 21, ../../app/styles/hompageMediaQueries.scss */
+  .contact button {
+    width: 90%;
+    font-size: 1em;
+  }
+}
+/* ====================================
+        >>>>  MEDIA QUERIES  <<<<
+   ==================================== */
+@media screen and (max-width: 650px) {
+  /* line 38, ../../app/styles/hompageMediaQueries.scss */
+  .brand-svg {
+    height: 40%;
+    width: 40%;
+    margin: auto;
+    margin-top: 5%;
+  }
+
+  /* line 45, ../../app/styles/hompageMediaQueries.scss */
+  .nav-bar .nav-bar-right {
+    width: 20%;
+    margin-left: 10%;
+  }
+  /* line 51, ../../app/styles/hompageMediaQueries.scss */
+  .nav-bar .nav-bar-left {
+    margin-left: 10%;
+    width: 60%;
+  }
+
+  /* line 56, ../../app/styles/hompageMediaQueries.scss */
+  .about {
+    display: block;
+    background: transparent;
+    width: 100%;
+  }
+  /* line 60, ../../app/styles/hompageMediaQueries.scss */
+  .about .about-content {
+    width: 90%;
+    margin: 5%;
+  }
+
+  /* line 70, ../../app/styles/hompageMediaQueries.scss */
+  header .header-content h2 {
+    font-size: 1.5em;
+    line-height: 1.25em;
+  }
+
+  /* line 78, ../../app/styles/hompageMediaQueries.scss */
+  .product-features {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 5%;
+  }
+  /* line 83, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-one {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 87, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-one .feature-image {
+    margin: 5%;
+    background-image: url("../images/graph.png");
+  }
+  /* line 92, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-two {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 96, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-two .feature-image {
+    margin: 5%;
+    background-image: url("../images/d3.png");
+  }
+  /* line 101, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-three {
+    height: 250px;
+    width: 90%;
+    flex-direction: column;
+  }
+  /* line 105, ../../app/styles/hompageMediaQueries.scss */
+  .product-features .feature-three .feature-image {
+    margin: 5%;
+    background-image: url("../images/d3_3.png");
+  }
+
+  /* line 111, ../../app/styles/hompageMediaQueries.scss */
+  .feature-text {
+    width: 90%;
+  }
+
+  /* line 117, ../../app/styles/hompageMediaQueries.scss */
+  .contact {
+    width: 90%;
+  }
+
+  /* line 123, ../../app/styles/hompageMediaQueries.scss */
+  footer {
+    flex-direction: column;
+  }
+  /* line 125, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-left {
+    width: 80%;
+  }
+  /* line 128, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-right {
+    width: 80%;
+  }
+  /* line 131, ../../app/styles/hompageMediaQueries.scss */
+  footer .footer-center {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 850px) {
+  /* line 2, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container {
+    display: flex;
+    flex-direction: column;
+    width: 100% auto;
+    height: 100vh;
+  }
+  /* line 7, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane {
+    width: 100%;
+    background-color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 12, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane h1 {
+    height: 200px;
+    margin-top: 10%;
+  }
+  /* line 16, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane h2 {
+    height: 200px;
+  }
+  /* line 19, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .left-pane img {
+    height: 200px;
+  }
+  /* line 23, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  /* line 28, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane .first-flight-form {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+  }
+  /* line 33, ../../app/styles/firstflightMediaQueries.scss */
+  .first-flight-container .right-pane .first-flight-form input {
+    width: 70%;
+    margin: auto;
+    height: 50px;
+    margin-top: 4%;
+  }
+}
+/* line 3, ../../app/styles/globalResets.scss */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+a, a:before, a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+.nav-text {
+  color: #424242;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+body {
+  line-height: 1;
+  text-align: center;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+blockquote:after, blockquote:before, q:after, q:before {
+  content: '';
+  content: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 1, ../../app/styles/table.scss */
+table {
+  width: 100%;
+}
+/* line 3, ../../app/styles/table.scss */
+table tr {
+  width: 100%;
+  height: 4em;
+}
+/* line 7, ../../app/styles/table.scss */
+table td {
+  margin: auto;
+  width: 50px;
+}
+/* line 11, ../../app/styles/table.scss */
+table td:first-child {
+  box-shadow: inset 1px 0 0 #fff;
+}
+/* line 14, ../../app/styles/table.scss */
+table td:last-child {
+  border-right: 1px solid #e8e8e8;
+  box-shadow: inset -1px 0 0 #fff;
+}
+/* line 18, ../../app/styles/table.scss */
+table tr:nth-child(odd) td {
+  background-color: rgba(249, 249, 249, 0.7);
+}
+/* line 21, ../../app/styles/table.scss */
+table tr:last-of-type td {
+  box-shadow: inset 0 -1px 0 #fff;
+}
+/* line 24, ../../app/styles/table.scss */
+table tr:last-of-type td:first-child {
+  box-shadow: inset 1px -1px 0 #fff;
+}
+/* line 27, ../../app/styles/table.scss */
+table tr:last-of-type td:last-child {
+  box-shadow: inset -1px -1px 0 #fff;
+}
+
+/* line 11, ../../app/styles/main.scss */
+body {
+  font-family: "Helvetica";
+  background-color: white;
+}
+
+/* line 16, ../../app/styles/main.scss */
+h3 {
+  font-size: 1.5em;
+}
+
+/* line 17, ../../app/styles/main.scss */
+.brand-svg {
+  height: 20%;
+  width: 20%;
+  margin: auto;
+  margin-top: 5%;
+}
+
+/* line 21, ../../app/styles/main.scss */
+.nav-bar {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  border-bottom: .1px solid #ccc;
+}
+/* line 28, ../../app/styles/main.scss */
+.nav-bar .nav-bar-right {
+  list-style: none;
+  display: flex;
+  width: 20%;
+  margin-right: 10%;
+  text-align: right;
+}
+/* line 34, ../../app/styles/main.scss */
+.nav-bar .nav-bar-right a {
+  margin: 4%;
+}
+/* line 38, ../../app/styles/main.scss */
+.nav-bar .nav-bar-left {
+  margin-left: 15%;
+  width: 70%;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+}
+
+/* line 51, ../../app/styles/main.scss */
+header {
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* line 56, ../../app/styles/main.scss */
+header .header-content {
+  display: flex;
+  flex-direction: column;
+}
+/* line 58, ../../app/styles/main.scss */
+header .header-content h1 {
+  font-size: 4em;
+  color: #424242;
+  font-style: italic;
+  font-weight: bolder;
+  transition: text-shadow 2s;
+}
+/* line 65, ../../app/styles/main.scss */
+header .header-content h1:hover {
+  text-shadow: 1px 1px rgba(255, 121, 97, 0.5), 2px 2px rgba(255, 121, 97, 0.50056), 3px 3px rgba(255, 121, 96, 0.50111), 4px 4px rgba(255, 121, 96, 0.50167), 5px 5px rgba(255, 122, 96, 0.50222), 6px 6px rgba(255, 122, 95, 0.50278), 7px 7px rgba(255, 122, 95, 0.50333), 8px 8px rgba(255, 122, 95, 0.50389), 9px 9px rgba(255, 122, 94, 0.50444), 10px 10px rgba(255, 122, 94, 0.505), 11px 11px rgba(255, 122, 94, 0.50556), 12px 12px rgba(255, 123, 94, 0.50611), 13px 13px rgba(255, 123, 93, 0.50667), 14px 14px rgba(255, 123, 93, 0.50722), 15px 15px rgba(255, 123, 93, 0.50778), 16px 16px rgba(255, 123, 92, 0.50833), 17px 17px rgba(255, 123, 92, 0.50889), 18px 18px rgba(255, 123, 92, 0.50944), 19px 19px rgba(255, 124, 91, 0.51), 20px 20px rgba(255, 124, 91, 0.51056), 21px 21px rgba(255, 124, 91, 0.51111), 22px 22px rgba(255, 124, 91, 0.51167), 23px 23px rgba(255, 124, 90, 0.51222), 24px 24px rgba(255, 124, 90, 0.51278), 25px 25px rgba(255, 124, 90, 0.51333), 26px 26px rgba(255, 124, 89, 0.51389), 27px 27px rgba(255, 125, 89, 0.51444), 28px 28px rgba(255, 125, 89, 0.515), 29px 29px rgba(255, 125, 88, 0.51556), 30px 30px rgba(255, 125, 88, 0.51611), 31px 31px rgba(255, 125, 88, 0.51667), 32px 32px rgba(255, 125, 88, 0.51722), 33px 33px rgba(255, 125, 87, 0.51778);
+}
+/* line 68, ../../app/styles/main.scss */
+header .header-content h2 {
+  font-size: 1.75em;
+  margin: 50px;
+  color: #424242;
+  font-weight: 300;
+}
+/* line 71, ../../app/styles/main.scss */
+header .header-content button {
+  border: 1px solid #62a0dc;
+  background: transparent;
+  color: #62a0dc;
+  border-radius: 30px;
+  margin: auto;
+  padding: auto;
+  transition: color .5s, background-color .5s;
+}
+/* line 80, ../../app/styles/main.scss */
+header .header-content button:hover {
+  border: 1px solid #62a0dc;
+  background: white;
+  color: white;
+  background-color: #62a0dc;
+}
+
+/* line 91, ../../app/styles/main.scss */
+.about {
+  height: 100%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  width: 74%;
+  justify-content: center;
+  margin: auto;
+}
+/* line 99, ../../app/styles/main.scss */
+.about .about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30.5%;
+  background-color: white;
+  height: 300px;
+  margin: auto;
+  padding: auto;
+  font-weight: normal;
+  transition: border-radius .5s;
+}
+/* line 111, ../../app/styles/main.scss */
+.about .about-content p {
+  font-weight: lighter;
+  line-height: 1.5em;
+  margin: 7%;
+}
+/* line 117, ../../app/styles/main.scss */
+.about h3 {
+  font-size: 1.5em;
+  margin: 7%;
+  font-weight: 300;
+}
+
+/* line 126, ../../app/styles/main.scss */
+.product-features {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 5%;
+  margin: auto;
+}
+/* line 132, ../../app/styles/main.scss */
+.product-features h3 {
+  padding: 5%;
+  font-weight: 300;
+}
+/* line 136, ../../app/styles/main.scss */
+.product-features p {
+  padding-left: 5%;
+  padding-right: 5%;
+  font-weight: lighter;
+  line-height: 1.5em;
+}
+/* line 142, ../../app/styles/main.scss */
+.product-features .feature-one {
+  height: 200px;
+  width: 80%;
+  background: white;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+/* line 151, ../../app/styles/main.scss */
+.product-features .feature-one .feature-image {
+  width: 50%;
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  background-image: url("../images/graph.png");
+}
+/* line 159, ../../app/styles/main.scss */
+.product-features .feature-two {
+  height: 200px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+/* line 168, ../../app/styles/main.scss */
+.product-features .feature-two .feature-image {
+  width: 50%;
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  background-image: url("../images/d3.png");
+}
+/* line 176, ../../app/styles/main.scss */
+.product-features .feature-three {
+  height: 200px;
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+}
+/* line 185, ../../app/styles/main.scss */
+.product-features .feature-three .feature-image {
+  width: 50%;
+  background-color: white;
+  height: 90%;
+  width: 90%;
+  background-image: url("../images/d3_3.png");
+}
+
+/* line 194, ../../app/styles/main.scss */
+.feature-text {
+  width: 50%;
+  background-color: white;
+  height: 90%;
+}
+/* line 198, ../../app/styles/main.scss */
+.feature-text p {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+/* line 206, ../../app/styles/main.scss */
+.contact {
+  color: white;
+  width: 72%;
+  margin: auto;
+  height: 250px;
+  background: linear-gradient(to right, #9cd0f7, #62a0dc);
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: auto;
+  margin-top: 5%;
+}
+/* line 217, ../../app/styles/main.scss */
+.contact .call-to-action {
+  width: 50%;
+  background-color: transparent;
+}
+/* line 221, ../../app/styles/main.scss */
+.contact .login-to-app {
+  width: 50%;
+}
+/* line 224, ../../app/styles/main.scss */
+.contact h3 {
+  font-weight: 200;
+}
+/* line 227, ../../app/styles/main.scss */
+.contact button {
+  border: 1px solid #62a0dc;
+  background: transparent;
+  color: #62a0dc;
+  border-radius: 30px;
+  margin: auto;
+  padding: auto;
+  transition: color .5s, background-color .5s;
+}
+/* line 236, ../../app/styles/main.scss */
+.contact button:hover {
+  border: 1px solid #62a0dc;
+  background: white;
+  color: white;
+  background-color: #62a0dc;
+}
+
+/* line 246, ../../app/styles/main.scss */
+footer {
+  width: 100%;
+  margin: auto;
+  height: 170px;
+  background-color: #edf3f7;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top: .1px solid #ccc;
+}
+/* line 256, ../../app/styles/main.scss */
+footer .footer-left {
+  width: 10%;
+  padding: auto;
+  margin: auto;
+  color: #b1b6ba;
+  margin-left: 12%;
+}
+/* line 263, ../../app/styles/main.scss */
+footer .footer-right {
+  width: 10%;
+  margin: auto;
+  color: #b1b6ba;
+}
+/* line 268, ../../app/styles/main.scss */
+footer .footer-center {
+  width: 10%;
+  margin: auto;
+  color: #b1b6ba;
+}

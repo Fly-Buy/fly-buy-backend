@@ -94,7 +94,7 @@ router.post('/dashboard', function(req, res){
   // Coerce the query builder into a promise
   flights.then(function(flights){
     var flightPrices = []
-    flights.forEach((flight)=>{
+    flights.forEach(function(flight){
       flightPrices.push(flight.price_paid)
     })
     res.json(flightPrices);

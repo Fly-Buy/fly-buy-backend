@@ -1,0 +1,51 @@
+/* line 1, ../../app/styles/firstflight.scss */
+.first-flight-container {
+  display: flex;
+  flex-direction: row;
+  width: 100% auto;
+  height: 100vh;
+}
+/* line 6, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane {
+  width: 50%;
+  background-color: #e1e1e1;
+  display: flex;
+  flex-direction: column;
+}
+/* line 11, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane h1 {
+  height: 300px;
+  margin-top: 20%;
+}
+/* line 15, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane h2 {
+  height: 300px;
+}
+/* line 18, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane img {
+  height: 300px;
+}
+/* line 22, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane {
+  width: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+/* line 27, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form {
+  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+}
+/* line 32, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form input {
+  width: 60%;
+  margin: auto;
+  height: 50px;
+}
+/* line 37, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form button {
+  height: 50px;
+}

@@ -1,0 +1,36 @@
+<main class="first-flight-container">
+  <div class="left-pane">
+    <h1>Welcome, {{ff.user.name}}</h1>
+    <img src="path/to/img" />
+    <h2>Please enter some flight info to begin using our app</h2>
+  </div>
+  <div class="right-pane">
+    <form class="first-flight-form" ng-model="ff.insertFlight" name="firstflightform">
+     <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ng-required="true" ng-model="ff.insertFlight.flightDate" placeholder="Flight Date" name="flight_date" />
+
+     <input type="text" ng-model="ff.insertFlight.Airline" placeholder="Airline" uib-typeahead="airline as airline.name for airline in ff.airlines | filter:$viewValue | limitTo:8" typeahead-loading="ff.loadingLocations" typeahead-no-results="ff.noResultsAirline">
+     <i ng-show="ff.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="ff.noResultsAirline">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+
+     <input type="text" ng-model="ff.insertFlight.DepartureAirport" ng-required="true" placeholder="Departure Airport" uib-typeahead="airport as airport.name for airport in ff.airports | filter:$viewValue | limitTo:8" typeahead-loading="ff.loadingLocations" typeahead-no-results="ff.noResultsDepAirport">
+     <i ng-show="ff.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="ff.noResultsDepAirport">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+
+     <input type="text" ng-model="ff.insertFlight.ArrivalAirport" ng-required="true" placeholder="Arrival Airport" uib-typeahead="airport as airport.name for airport in ff.airports | filter:$viewValue | limitTo:8" typeahead-loading="ff.loadingLocations" typeahead-no-results="ff.noResultsArrAirport">
+     <i ng-show="ff.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="ff.noResultsArrAirport">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+
+     <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" ng-model="ff.insertFlight.purchaseDate" placeholder="Purchase Date" name="purchase_date" />
+     <input type="text" ng-model="ff.insertFlight.flightNum" placeholder="Flight Number" name="flight_number"/>
+     <input type="number" ng-model="ff.insertFlight.pricePaid" ng-required="true" placeholder="Price" name="price_paid" min="0" step="1" value="100"/>
+     <input type="text" ng-model="ff.insertFlight.purchaseLocation" placeholder="Purchase Location" name="purchase_location" />
+     <input type="submit" value="Submit Flight Info" ng-disabled="ff.noResultsAirline || ff.noResultsDepAirport || ff.noResultsArrAirport" ng-click="ff.postFlight(ff.insertFlight)">
+   </form>
+  </div>
+</main>
