@@ -151,12 +151,7 @@ router.post('/dashboard/chart2', function(req, res){
 })
 
 router.post('/dashboard/chart3', function(req,res){
-  var properties = [
-    "airline_id",
-    "departure_airport_id",
-    "arrival_airport_id",
-    "flight_date"
-  ];
+  var properties = [];
 
   var flights = knex('flights');
   flights.where("id", ">", 0);
@@ -166,37 +161,7 @@ router.post('/dashboard/chart3', function(req,res){
       flights.andWhere(property, req.body[property]);
     }
   })
+  flights.then(function(flights){
+    res.json("work in progress")
+  })
 })
-
-//
-
-
-
-
-
-
-// Coerce the query builder into a promise
-// flights.then(function(flights){
-//   var flightPrices = []
-//   flights.forEach((flight)=>{
-//     flightPrices.push(flight.price_paid)
-//   })
-//   res.json(flightPrices);
-// }).catch(function(err){
-//   throw err;
-// });
-
-// flights.then(function(flights){
-//   flightsChart2.then(function(flights2){
-//     flightsChart3.then(function(flights3){
-
-//
-//       // TODO: if airline_id && departure_airport_id && arrival_airport_id && flight_date
-//       flights3.forEach((flight)=>{
-//         // line graph of prices +/- 7 days of flight_date
-//         // TODO: install moment.js
-//
-//       })
-//     })
-//   })
-// })
