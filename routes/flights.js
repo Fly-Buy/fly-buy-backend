@@ -68,7 +68,6 @@ router.put('/:id', function(req, res){
     console.log(result);
     res.json(result);
   })
-  .catch(function(error) {
     console.error(error);
     res.json(error);
   });
@@ -98,88 +97,70 @@ router.post('/dashboard', function(req, res){
   flights.then(function(flights){
     flights.forEach((flight)=>{
       dashboard.chart_data.push(flight.price_paid);
-      dashboard.row_data = flights;
     })
+    dashboard.row_data = flights;
     res.json(dashboard);
   })
 })
 
 module.exports = router;
 
-// var propertiesChart2 = [
-//   "departure_airport_id",
-//   "arrival_airport_id"
-// ];
-//
-// var propertiesChart3 = [
-//   "airline_id",
-//   "departure_airport_id",
-//   "arrival_airport_id",
-//   "flight_date"
-// ]
+router.post('/dashboard/chart2', function(req, res){
+  var dashboard = {
+    chart_data: [],
+    row_data: []
+  };
 
-// var flightsChart2 = knex('flights');
-// flightsChart2.where("id", ">", 0);
-// propertiesChart2.forEach(function(property){
-//   if(req.body.hasOwnProperty(property) && req.body[property] != null
-//     && req.body[property] != 'undefined') {
-//     flightsChart2.andWhere(property, req.body[property]);
-//   }
-// })
-//
-// var flightsCharts3 = knex('flights');
-// flightsChart3.where("id", ">", 0);
-// propertiesChart3.forEach(function(property){
-//   if(req.body.hasOwnProperty(property) && req.body[property] != null
-//     && req.body[property] != 'undefined') {
-//     flightsChart3.andWhere(property, req.body[property]);
-//   }
-// })
+  var properties = [
+    "departure_airport_id",
+    "arrival_airport_id"
+  ];
 
+  var flights = knex('flights');
+  flights.where("id", ">", 0);
+  properties.forEach(function(property){
+    if(req.body.hasOwnProperty(property) && req.body[property] != null
+      && req.body[property] != 'undefined') {
+      flights.andWhere(property, req.body[property]);
+    }
+  })
 
-// Coerce the query builder into a promise
-// flights.then(function(flights){
-//   var flightPrices = []
-//   flights.forEach((flight)=>{
-//     flightPrices.push(flight.price_paid)
-//   })
-//   res.json(flightPrices);
-// }).catch(function(err){
-//   throw err;
-// });
+  // TODO: if departure_airport_id
+  flights.then(function(flights){
+    flights.forEach((flight)=>{
+      // if dashboard.chart02_data (array) has object with property label
+      // matching arrival_airport_id increment its counter
+      // else create an object with property label and value arrival_airport_id
+      // and property value should be set to 1
+      // pos = myArray.map(function(e) { return e.hello; }).indexOf('stevie');
+      var pos = dashboard.chart_data.map((e)=>{return e.label;})
+        .indexOf(flight.arrival_airport_id)
+      if (pos >= 0){
+        dashboard.chart_data[pos].value += 1;
+      } else {
+        dashboard.chart_data.push({
+          label: flight.arrival_airport_id,
+          value: 1
+        })
+      }
+    })
+    dashboard.row_data = flights;
+    res.json(dashboard);
+  })
+})
 
-// flights.then(function(flights){
-//   flightsChart2.then(function(flights2){
-//     flightsChart3.then(function(flights3){
-//       // TODO: if any of the 4 req.body vars
-//       flights.forEach((flight)=>{
-//         dashboard.chart01_data.push(flight.price_paid);
-//         dashboard.row_data = flights;
-//       })
-//       // TODO: if departure_airport_id
-//       flights2.forEach((flight)=>{
-//         // if dashboard.chart02_data (array) has object with property label
-//         // matching arrival_airport_id increment its counter
-//         // else create an object with property label and value arrival_airport_id
-//         // and property value should be set to 1
-//         // pos = myArray.map(function(e) { return e.hello; }).indexOf('stevie');
-//         var pos = dashboard.chart02_data.map((e)=>{return e.label;})
-//           .indexOf(flight.arrival_airport_id)
-//         if (pos >= 0){
-//           dashboard.chart02_data[pos].value += 1;
-//         } else {
-//           dashboard.chart02_data.push({
-//             label: flight.arrival_airport_id,
-//             value: 1
-//           })
-//         }
-//       })
-//       // TODO: if airline_id && departure_airport_id && arrival_airport_id && flight_date
-//       flights3.forEach((flight)=>{
-//         // line graph of prices +/- 7 days of flight_date
-//         // TODO: install moment.js
-//
-//       })
-//     })
-//   })
-// })
+router.post('/dashboard/chart3', function(req,res){
+  var properties = [];
+
+  var flights = knex('flights');
+  flights.where("id", ">", 0);
+  properties.forEach(function(property){
+    if(req.body.hasOwnProperty(property) && req.body[property] != null
+      && req.body[property] != 'undefined') {
+      flights.andWhere(property, req.body[property]);
+    }
+  })
+  flights.then(function(flights){
+    res.json("work in progress")
+  })
+})
