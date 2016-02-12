@@ -9,7 +9,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('babel', () => {
-	return gulp.src(['routes/es2015/flights.js'])
+	return gulp.src('routes/es2015/*.js')
 		.pipe(babel({
 			presets: ['es2015']
 		}))
