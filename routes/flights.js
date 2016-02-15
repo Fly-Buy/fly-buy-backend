@@ -79,13 +79,11 @@ router.post('/dashboard/chart1', function (req, res) {
       flights.andWhere(property, req.body[property]);
     }
   });
-
+  flights.limit(25);
   flights.then(function(flights) {
     dashboard.row_data = flights;
     flights.forEach(function (flight) {
-      // console.log(flight.arrival_airport_id);
       var pos = dashboard.chart_data.map(function(e) {
-        console.log('e.key:', e.key);
         return e.key;
       }).indexOf(flight.airline_id);
       if (pos >= 0) {
