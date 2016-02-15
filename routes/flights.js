@@ -65,7 +65,7 @@ router.put('/:id', function (req, res) {
   });
 });
 
-router.post('/dashboard', function (req, res) {
+router.post('/dashboard/chart1', function (req, res) {
   var dashboard = {
     chart_data: [],
     row_data: []
@@ -81,15 +81,31 @@ router.post('/dashboard', function (req, res) {
   });
 
   flights.then(function (flights) {
-    flights.forEach(function (flight) {
-      dashboard.chart_data.push(flight.price_paid);
-    });
     dashboard.row_data = flights;
+    flights.forEach(function (flight) {
+      var pos = dashboard.chart_data.map(function (e) {
+        return e.key;
+      }).indexOf(flight.arrival_airport_id);
+      if (pos >= 0) {
+        dashboard.chart_data[pos].values.push({
+          label: flight.arrival_airport_id,
+          value: flight.price_paid
+        })
+      } else {
+        dashboard.chart_data.push({
+          key: flight.airline_id,
+          values: [{
+            label: flight.arrival_airport_id,
+            value: flight.price_paid
+          }]
+        });
+      }
+    });
     res.json(dashboard);
   });
 });
 
-module.exports = router;
+
 
 router.post('/dashboard/chart2', function (req, res) {
   var dashboard = {
@@ -146,3 +162,5 @@ router.post('/dashboard/chart3', function (req, res) {
     res.json("work in progress");
   });
 });
+
+module.exports = router;
