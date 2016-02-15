@@ -104,7 +104,6 @@ router.post('/dashboard', function(req, res){
   })
 })
 
-module.exports = router;
 
 router.post('/dashboard/chart2', function(req, res){
   var dashboard = {
@@ -165,3 +164,5 @@ router.post('/dashboard/chart3', function(req,res){
     res.json("work in progress")
   })
 })
+
+module.exports = router;
