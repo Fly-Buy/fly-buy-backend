@@ -80,12 +80,14 @@ router.post('/dashboard/chart1', function (req, res) {
     }
   });
 
-  flights.then(function (flights) {
+  flights.then(function(flights) {
     dashboard.row_data = flights;
     flights.forEach(function (flight) {
-      var pos = dashboard.chart_data.map(function (e) {
+      // console.log(flight.arrival_airport_id);
+      var pos = dashboard.chart_data.map(function(e) {
+        console.log('e.key:', e.key);
         return e.key;
-      }).indexOf(flight.arrival_airport_id);
+      }).indexOf(flight.airline_id);
       if (pos >= 0) {
         dashboard.chart_data[pos].values.push({
           label: flight.arrival_airport_id,
