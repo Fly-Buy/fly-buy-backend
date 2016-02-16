@@ -5,6 +5,7 @@ var router = express.Router();
 var knex = require('../local_modules/knex');
 
 router.get('/', function (req, res) {
+  console.log(req.headers);
   knex('flights').then(function (flights) {
     res.json(flights);
   });

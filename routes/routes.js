@@ -9,10 +9,18 @@ var knex = require('../local_modules/knex');
 function ensureAuthenticated(req, res, next) {
   console.log("ensureAuthenticated",req.isAuthenticated());
   if (process.env.testing == 'true' || req.isAuthenticated()) {
-    if (process.env.testing == 'true' || userEntryCheck(req.user.id) >= 1) {
+    if (process.env.testing == 'true' || userEntryCheck(req.user.flybuy_id) >= 1) {
       return next();
     }
-    res.redirect('/#/firstflight') // update this to redirect to first entry page when created (this likely will be a front-side redirect)
+    res.json({redirect: '/#/firstflight'})
+  }
+  res.json({redirect: '/#'});
+}
+
+function ensureAuth(req, res, next) {
+  console.log("ensureAuth",req.isAuthenticated());
+  if (process.env.testing == 'true' || req.isAuthenticated()) {
+    return next();
   }
   res.send("Sign-in failed.");
 }
@@ -33,7 +41,7 @@ router.get('/', function(req, res){
 
 router.use('/airlines', airlines);
 router.use('/airports', airports);
-router.use('/flights', flights);
+router.use('/flights', ensureAuthenticated, flights);
 
 router.get('/test', ensureAuthenticated, function(req, res){
   res.json({signedIn: 'yes'});
