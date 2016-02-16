@@ -15,7 +15,6 @@ angular.module('flyBuyApp')
     var Flight = $resource(apihost + '/flights');
     var UserFlights = $resource(apihost + '/user/:userID', {userID: '@id'});
 
-
     return {
       getAirlines: airlines,
       getAirports: airports,
@@ -24,7 +23,7 @@ angular.module('flyBuyApp')
       postFlight: function(flightInfo){
         console.log(flightInfo);
         var newFlight = new Flight();
-        newFlight.user_id = flightInfo.user ? flightInfo.user.id : null;
+        newFlight.user_id = null;
         newFlight.flight_date = flightInfo.flightDate || null;
         newFlight.purchase_date = flightInfo.purchaseDate || null;
         newFlight.flight_number = flightInfo.flightNum || null;

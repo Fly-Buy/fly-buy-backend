@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-// var cookieParser = require('cookie-parser');
+var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var dotenv = require('dotenv').load();
@@ -30,17 +30,29 @@ var nodemonkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"})
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.set('trust proxy', 1) // trust first proxy
 app.use(logger('dev'));
-app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+var whitelist = [process.env.FRONT_END, 'http://127.0.0.1:3000', 'http://127.0.0.1:3001', 'https://fly-buy.cfapps.io', 'https://fly-buy.firebaseapp.com'];
+var corsOptions = {
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(null, originIsWhitelisted);
+  },
+  credentials: true
+};
+app.options('*', cors(corsOptions));
+// app.use(cors(corsOptions));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.cookie('flybuy', req.cookies.flybuy);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   if ('OPTIONS' == req.method) {

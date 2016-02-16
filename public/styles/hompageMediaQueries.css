@@ -74,7 +74,7 @@
   }
   /* line 83, ../../app/styles/hompageMediaQueries.scss */
   .product-features .feature-one {
-    height: 250px;
+    height: 300px;
     width: 90%;
     flex-direction: column;
   }
@@ -85,7 +85,7 @@
   }
   /* line 92, ../../app/styles/hompageMediaQueries.scss */
   .product-features .feature-two {
-    height: 250px;
+    height: 300px;
     width: 90%;
     flex-direction: column;
   }
@@ -96,7 +96,7 @@
   }
   /* line 101, ../../app/styles/hompageMediaQueries.scss */
   .product-features .feature-three {
-    height: 250px;
+    height: 300px;
     width: 90%;
     flex-direction: column;
   }
@@ -108,27 +108,28 @@
 
   /* line 111, ../../app/styles/hompageMediaQueries.scss */
   .feature-text {
-    width: 90%;
+    width: 100%;
+    margin: 0;
   }
 
-  /* line 117, ../../app/styles/hompageMediaQueries.scss */
+  /* line 118, ../../app/styles/hompageMediaQueries.scss */
   .contact {
     width: 90%;
   }
 
-  /* line 123, ../../app/styles/hompageMediaQueries.scss */
+  /* line 124, ../../app/styles/hompageMediaQueries.scss */
   footer {
     flex-direction: column;
   }
-  /* line 125, ../../app/styles/hompageMediaQueries.scss */
+  /* line 126, ../../app/styles/hompageMediaQueries.scss */
   footer .footer-left {
     width: 80%;
   }
-  /* line 128, ../../app/styles/hompageMediaQueries.scss */
+  /* line 129, ../../app/styles/hompageMediaQueries.scss */
   footer .footer-right {
     width: 80%;
   }
-  /* line 131, ../../app/styles/hompageMediaQueries.scss */
+  /* line 132, ../../app/styles/hompageMediaQueries.scss */
   footer .footer-center {
     width: 80%;
   }

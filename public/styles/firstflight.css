@@ -8,7 +8,7 @@
 /* line 6, ../../app/styles/firstflight.scss */
 .first-flight-container .left-pane {
   width: 50%;
-  background-color: #e1e1e1;
+  background-color: white;
   display: flex;
   flex-direction: column;
 }
