@@ -25,6 +25,7 @@ router.get('/user/:userID', function (req, res) {
 
 router.post('/', function (req, res) {
   console.log(req.body);
+  console.log(req.session);
   knex('flights').insert({
     user_id: req.body.user_id,
     flight_date: req.body.flight_date,

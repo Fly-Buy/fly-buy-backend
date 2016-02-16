@@ -21,12 +21,15 @@ router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/shit' }),
   function(req, res) {
     console.log(req.session);
-    console.log(userEntryCheck(req.user.id));
-    if (userEntryCheck(req.user.id) === 1) {
-      res.redirect(process.env.FRONT_END + '/#/dashboard');
-    } else {
-      res.redirect(process.env.FRONT_END + '/#/firstflight');
-    }
+    console.log(req.user);
+    userEntryCheck(req.user.flybuy_id).then(function(rowCount){
+      console.log(rowCount);
+      if (rowCount >= 1) {
+        res.redirect(process.env.FRONT_END + '/#/dashboard');
+      } else {
+        res.redirect(process.env.FRONT_END + '/#/firstflight');
+      }
+    })
   });
 
 // facebook

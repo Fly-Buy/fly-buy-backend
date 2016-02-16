@@ -24,9 +24,10 @@ passport.use(new GoogleStrategy({
     // process.nextTick(function () {
     // });
     insertUser(profile);
-    var test = queryForUserID(profile.id);
-    console.log(test);
-    return done(null, profile);
+    queryForUserID(profile.id).then(function(id){
+      profile.flybuy_id = id;
+      return done(null, profile);
+    });
   }
 ));
 
@@ -75,10 +76,11 @@ function insertUser(profile) {
 
 // query for user id
 function queryForUserID(oauthID) {
+  console.log(oauthID);
   return knex('users').where('oauthid', oauthID)
     .then(function(user){
       console.log(user);
-      return +user;
+      return user[0].id;
     })
 }
 
