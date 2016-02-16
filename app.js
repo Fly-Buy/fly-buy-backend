@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
-var cookieParser = require('cookie-parser');
+// var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var dotenv = require('dotenv').load();
@@ -25,31 +25,33 @@ app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
 //send server side log to browser
-// var nodemonkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
+var nodemonkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
+app.set('trust proxy', 1) // trust first proxy
 app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // user session
 app.use(session({
+  name: 'flybuy',
   store: new pgSession({
     pg : pg,                                                    // Use global pg-module
     conString : process.env.DEV_DATABASE_URL,        // Connect using something else than default DATABASE_URL env variable
     tableName : 'session'                                      // Use another table-name than the default "session" one
   }),
-  saveUninitialized: true,
+  saveUninitialized: false,
   secret: process.env.SESS_SECRET,
-  resave: false,
+  resave: true,
   cookie: {
-    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
-    secure: true
+    maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    // secure: true
   }
 }));
 
