@@ -11,7 +11,7 @@ $ git submodule update --remote
 ```
   3. More info on git submodules here: [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
-## To run locally (temporary, will be updated)
+## To run decoupled locally (temporary, will be updated)
   1. In one shell (runs the API back-end)
 ```bash
 $ gulp
@@ -20,6 +20,16 @@ $ gulp
 ```bash
 $ cd ./fly-by-frontend
 $ grunt serve
+```
+
+## To run locally
+1. Build the front-end and copy it to public on back-end (relative to this project directory)
+```bash
+$ cd ./fly-by-frontend
+$ grunt build
+$ grunt copyup
+$ cd ..
+$ gulp
 ```
 
 ## CF Instructions

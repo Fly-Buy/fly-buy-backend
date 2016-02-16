@@ -25,6 +25,7 @@ router.get('/user/:userID', function (req, res) {
 
 router.post('/', function (req, res) {
   console.log(req.body);
+  console.log(req.session);
   knex('flights').insert({
     user_id: req.body.user_id,
     flight_date: req.body.flight_date,
@@ -65,7 +66,7 @@ router.put('/:id', function (req, res) {
   });
 });
 
-router.post('/dashboard/chart1', function (req, res) {
+router.post('/dashboard', function (req, res) {
   var dashboard = {
     chart_data: [],
     row_data: []
@@ -100,7 +101,11 @@ router.post('/dashboard/chart1', function (req, res) {
           }]
         });
       }
+  flights.then(function (flights) {
+    flights.forEach(function (flight) {
+      dashboard.chart_data.push(flight.price_paid);
     });
+    dashboard.row_data = flights;
     res.json(dashboard);
   });
 });
