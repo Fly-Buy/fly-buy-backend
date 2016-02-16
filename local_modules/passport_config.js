@@ -23,11 +23,11 @@ passport.use(new GoogleStrategy({
     // asynchronous verification, for effect...
     // process.nextTick(function () {
     // });
-    insertUser(profile);
-    queryForUserID(profile.id).then(function(id){
+    insertUser(profile).then(function(id){
+      console.log(id);
       profile.flybuy_id = id;
       return done(null, profile);
-    });
+    })
   }
 ));
 
@@ -48,7 +48,7 @@ passport.use(new GoogleStrategy({
 // insert user into users table
 function insertUser(profile) {
   console.log(profile);
-  knex('users').where('oauthid', profile.id)
+  return knex('users').where('oauthid', profile.id)
   .then(function(user){
     console.log(user);
     if (user.length === 0) {
@@ -66,22 +66,11 @@ function insertUser(profile) {
   })
   .then(function(result){
     console.log(result);
-    profile.flybuy_id = result[0];
-    return profile;
+    return +result[0];
   })
   .catch(function(error){
     console.error(error);
   })
-}
-
-// query for user id
-function queryForUserID(oauthID) {
-  console.log(oauthID);
-  return knex('users').where('oauthid', oauthID)
-    .then(function(user){
-      console.log(user);
-      return user[0].id;
-    })
 }
 
 module.exports = passport;
