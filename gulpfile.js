@@ -1,11 +1,20 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   plumber = require('gulp-plumber'),
-  livereload = require('gulp-livereload')
+  livereload = require('gulp-livereload'),
+  babel = require('gulp-babel');
 
 gulp.task('watch', function() {
-  gulp.watch('./public/css/*.scss', ['sass']);
+  gulp.watch('./routes/es2015/*.js', ['babel']);
 });
+
+gulp.task('babel', () => {
+	return gulp.src('routes/es2015/*.js')
+		.pipe(babel({
+			presets: ['es2015']
+		}))
+		.pipe(gulp.dest('routes'));
+})
 
 gulp.task('develop', function () {
   livereload.listen();
@@ -25,6 +34,7 @@ gulp.task('develop', function () {
 });
 
 gulp.task('default', [
+  'babel',
   'develop',
   'watch'
 ]);
