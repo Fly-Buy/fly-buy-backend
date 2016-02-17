@@ -27,7 +27,7 @@ router.post('/', function (req, res) {
   console.log(req.body);
   console.log(req.session);
   knex('flights').insert({
-    user_id: req.body.user_id,
+    user_id: req.user.flybuy_id,
     flight_date: req.body.flight_date,
     purchase_date: req.body.purchase_date,
     flight_number: req.body.flight_number ? parseInt(req.body.flight_number) : null,
