@@ -1,6 +1,6 @@
 var dotenv = require('dotenv').load();
 var authID = require('../oauthIDs.js');
-// var knex = require('../local_modules/knex');
+var knex = require('../local_modules/knex');
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -21,9 +21,13 @@ passport.use(new GoogleStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
-    process.nextTick(function () {
+    // process.nextTick(function () {
+    // });
+    insertUser(profile).then(function(id){
+      console.log(id);
+      profile.flybuy_id = id;
       return done(null, profile);
-    });
+    })
   }
 ));
 
@@ -40,5 +44,33 @@ passport.use(new GoogleStrategy({
 //     });
 //   }
 // ));
+
+// insert user into users table
+function insertUser(profile) {
+  console.log(profile);
+  return knex('users').where('oauthid', profile.id)
+  .then(function(user){
+    console.log(user);
+    if (user.length === 0) {
+      return knex('users').insert({
+        first_name:   profile.name.givenName,
+        last_name:    profile.name.familyName,
+        oauthid:      profile.id,
+        provider:     profile.provider,
+        user_image:   profile.photos[0].value,
+        times_visited:   1
+      }).returning('id');
+    } else {
+      return knex('users').where('oauthid', user[0].oauthid).increment('times_visited', 1).returning('id')
+    }
+  })
+  .then(function(result){
+    console.log(result);
+    return +result[0];
+  })
+  .catch(function(error){
+    console.error(error);
+  })
+}
 
 module.exports = passport;

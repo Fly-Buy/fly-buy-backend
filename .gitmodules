@@ -1,0 +1,5 @@
+
+[submodule "fly-by-frontend"]
+	path = fly-by-frontend
+	url = git@github.com:Fly-Buy/fly-by-frontend.git
+	branch = dev

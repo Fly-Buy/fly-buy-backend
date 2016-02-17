@@ -1,4 +1,4 @@
-var dotenv = require('dotenv').load();
+// var dotenv = require('dotenv').load();
 
 module.exports = {
 
@@ -9,7 +9,8 @@ module.exports = {
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE
-    }
+    },
+    debug: true
   },
 
   production: {

@@ -1,0 +1,52 @@
+/* line 3, ../../app/styles/globalResets.scss */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+a, a:before, a:visited {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+.nav-text {
+  color: #424242;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+body {
+  line-height: 1;
+  text-align: center;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+blockquote:after, blockquote:before, q:after, q:before {
+  content: '';
+  content: none;
+}
+
+/* line 3, ../../app/styles/globalResets.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
