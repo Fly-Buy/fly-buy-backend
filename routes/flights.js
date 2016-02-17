@@ -81,6 +81,7 @@ router.post('/dashboard/chart1', function (req, res) {
     }
   });
   flights.innerJoin('airlines', 'airline_id', 'airlines.id');
+  flights.innerJoin('airports', 'departure_airport_id', 'airports.id');
   flights.then(function (flights) {
     dashboard.row_data = flights;
     flights.forEach(function (flight) {
