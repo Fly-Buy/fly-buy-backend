@@ -66,7 +66,7 @@ router.put('/:id', function (req, res) {
   });
 });
 
-router.post('/dashboard', function (req, res) {
+router.post('/dashboard/chart1', function (req, res) {
   var dashboard = {
     chart_data: [],
     row_data: []
@@ -80,77 +80,31 @@ router.post('/dashboard', function (req, res) {
       flights.andWhere(property, req.body[property]);
     }
   });
-  flights.innerJoin('airlines', 'airline_id', 'airlines.id')
-  flights.then(function(flights) {
+  flights.innerJoin('airlines', 'airline_id', 'airlines.id');
+  flights.then(function (flights) {
     dashboard.row_data = flights;
     flights.forEach(function (flight) {
-      var pos = dashboard.chart_data.map(function(e) {
+      var pos = dashboard.chart_data.map(function (e) {
         return e.key;
       }).indexOf(flight.icao);
       if (pos !== -1) {
         dashboard.chart_data[pos].values.push({
           x: dashboard.chart_data[pos].values.length,
           y: flight.price_paid
-        })
+        });
       } else {
         dashboard.chart_data.push({
           key: flight.icao,
           values: [{
-            x:  0,
+            x: 0,
             y: flight.price_paid
           }]
         });
       }
-  flights.then(function (flights) {
-    flights.forEach(function (flight) {
-      dashboard.chart_data.push(flight.price_paid);
     });
-    dashboard.row_data = flights;
     res.json(dashboard);
   });
 });
-// router.post('/dashboard/chart1', function (req, res) {
-//   var dashboard = {
-//     chart_data: [],
-//     row_data: []
-//   };
-//   var properties = ["flight_number", "departure_airport_id", "arrival_airport_id", "airline_id"];
-//
-//   var flights = knex('flights');
-//   flights.where("id", ">", 0);
-//   properties.forEach(function (property) {
-//     if (req.body.hasOwnProperty(property) && req.body[property] != null && req.body[property] != 'undefined') {
-//       flights.andWhere(property, req.body[property]);
-//     }
-//   });
-//   // flights.limit(25);
-//   flights.then(function(flights) {
-//     dashboard.row_data = flights;
-//     flights.forEach(function (flight) {
-//       var pos = dashboard.chart_data.map(function(e) {
-//         return e.key;
-//       }).indexOf(flight.airline_id);
-//       if (pos >= 0) {
-//         dashboard.chart_data[pos].values.push({
-//           x: flight.airline_id,
-//           y: flight.price_paid,
-//           size: flight.price_paid/100
-//         })
-//       } else {
-//         dashboard.chart_data.push({
-//           key: flight.airline_id,
-//           values: [{
-//             x: flight.airline_id,
-//             y: flight.price_paid,
-//             size: flight.price_paid/100
-//           }]
-//         });
-//       }
-//     });
-//     res.json(dashboard);
-//   });
-// });
-
 
 router.post('/dashboard/chart2', function (req, res) {
   var dashboard = {
