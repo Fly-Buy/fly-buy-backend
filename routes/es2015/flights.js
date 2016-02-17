@@ -99,14 +99,14 @@ router.post('/dashboard/chart1', function (req, res) {
       }).indexOf(flight.icao);
       if (pos !== -1) {
         dashboard.chart_data[pos].values.push({
-          x: dashboard.chart_data[pos].values.length,
+          x: dashboard.chart_data[pos].values.length+1,
           y: flight.price_paid
         })
       } else {
         dashboard.chart_data.push({
           key: flight.icao,
           values: [{
-            x:  0,
+            x:  1,
             y: flight.price_paid
           }]
         });
