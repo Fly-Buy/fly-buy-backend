@@ -71,7 +71,7 @@ router.post('/dashboard/chart1', function (req, res) {
     chart_data: [],
     row_data: []
   };
-  var properties = ["flight_number", "departure_airport_id", "arrival_airport_id", "airline_id"];
+  var properties = ["flight_number", "flight_date", "price_paid", "departure_airport_id", "arrival_airport_id", "airline_id"];
 
   var flights = knex('flights').select('flights.*', 'A.name as departure', 'B.name as arrival', 'C.name as airline', 'C.icao').from('flights').leftJoin('airports as A', 'A.id', 'flights.departure_airport_id').leftJoin('airports as B', 'B.id', 'flights.arrival_airport_id').leftJoin('airlines as C', 'C.id', 'flights.airline_id').where("flights.id", ">", 0);
   properties.forEach(function (property) {
