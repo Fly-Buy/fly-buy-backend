@@ -73,38 +73,55 @@ router.post('/dashboard/chart1', function (req, res) {
   };
   var properties = ["flight_number", "departure_airport_id", "arrival_airport_id", "airline_id"];
 
-  var flights = knex('flights');
-  flights.where("flights.id", ">", 0);
+  var flights = knex('flights').select('flights.*', 'A.name as departure', 'B.name as arrival', 'C.name as airline', 'C.icao').from('flights').leftJoin('airports as A', 'A.id', 'flights.departure_airport_id').leftJoin('airports as B', 'B.id', 'flights.arrival_airport_id').leftJoin('airlines as C', 'C.id', 'flights.airline_id').where("flights.id", ">", 0);
   properties.forEach(function (property) {
     if (req.body.hasOwnProperty(property) && req.body[property] != null && req.body[property] != 'undefined') {
       flights.andWhere(property, req.body[property]);
     }
   });
-  flights.innerJoin('airlines', 'airline_id', 'airlines.id');
-  flights.innerJoin('airports', 'departure_airport_id', 'airports.id');
+  // flights.innerJoin('airlines', 'airline_id', 'airlines.id')
+  // flights.innerJoin('airports', 'departure_airport_id', 'airports.id')
   flights.then(function (flights) {
     dashboard.row_data = flights;
     flights.forEach(function (flight) {
       var pos = dashboard.chart_data.map(function (e) {
         return e.key;
-      }).indexOf(flight.icao);
+      }).indexOf(flight.airline);
       if (pos !== -1) {
         dashboard.chart_data[pos].values.push({
           x: dashboard.chart_data[pos].values.length + 1,
-          y: flight.price_paid
+          y: flight.price_paid,
+          z: flight
         });
       } else {
         dashboard.chart_data.push({
-          key: flight.icao,
+          key: flight.airline,
           values: [{
             x: 1,
-            y: flight.price_paid
+            y: flight.price_paid,
+            z: flight
           }]
         });
       }
     });
     res.json(dashboard);
   });
+});
+
+router.post('/dashboard/chart1mod', function (req, res) {
+  var flights = knex('flights').select('flights.*', 'A.name as departure', 'B.name as arrival', 'C.name as airline').from('flights').leftJoin('airports as A', 'A.id', 'flights.departure_airport_id').leftJoin('airports as B', 'B.id', 'flights.arrival_airport_id').leftJoin('airlines as C', 'C.id', 'flights.airline_id').then(function (flights) {
+    res.json(flights);
+  });
+
+  // SELECT
+  //   flights.*,
+  //   A.name as departure,
+  //   B.name as arrival
+  // FROM
+  //   flights
+  // LEFT JOIN airports A on A.id = flights.departure_airport_id
+  // LEFT JOIN airports B on B.id = flights.arrival_airport_id
+  // ;
 });
 
 router.post('/dashboard/chart2', function (req, res) {
