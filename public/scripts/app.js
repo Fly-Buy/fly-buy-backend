@@ -21,8 +21,7 @@ angular
     'ngTouch',
     'ngLodash',
     'ui.bootstrap',
-    'nvd3',
-    'ngTable'
+    'nvd3'
   ])
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider
