@@ -9,7 +9,7 @@
  */
 
 angular.module('flyBuyApp')
-  .controller('DashboardCtrl', function ($scope, $http, $location, api, graphs, d3, NgTableParams) {
+  .controller('DashboardCtrl', function ($scope, $http, $location, api, graphs, d3) {
 
     var that = this;
 
@@ -65,7 +65,6 @@ angular.module('flyBuyApp')
         clearFlightInfo();
         that.data = data.chart_data;
         that.row_data = data.row_data;
-        that.tableParams = new NgTableParams({sorting: {Price: 'asc'}}, {dataset: that.row_data});
       });
     };
 
