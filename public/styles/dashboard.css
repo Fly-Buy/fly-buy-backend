@@ -6,26 +6,39 @@
   flex-direction: row;
   background-color: white;
 }
-/* line 10, ../../app/styles/dashboard.scss */
-.dashboard .left-input-bar {
-  width: 400px;
-  height: 100vh;
-  background-color: #e1e1e1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+/* line 7, ../../app/styles/dashboard.scss */
+.dashboard svg {
+  width: 100%;
+  height: 100%;
+  margin-top: 1%;
 }
-/* line 17, ../../app/styles/dashboard.scss */
+/* line 12, ../../app/styles/dashboard.scss */
+.dashboard .nv-x .tick line {
+  display: none;
+}
+/* line 15, ../../app/styles/dashboard.scss */
+.dashboard .nv-y .tick line {
+  display: none;
+}
+/* line 21, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar {
+  font-family: "Lato";
+  font-weight: 300;
+  color: #3a78b4;
+  background: linear-gradient(to bottom, #9cd0f7, #62a0dc);
+  width: 400px;
+}
+/* line 27, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .input-bar-header {
   margin: 5%;
   margin-top: 5%;
   font-size: 1.5em;
 }
-/* line 25, ../../app/styles/dashboard.scss */
+/* line 35, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .left-input-form {
   margin-top: 5%;
 }
-/* line 27, ../../app/styles/dashboard.scss */
+/* line 37, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .left-input-form .enter-flight {
   display: felx;
   justify-content: center;
@@ -33,106 +46,100 @@
   color: white;
   font-size: 1.25em;
   height: 50px;
-  background-color: #424242;
   border: none;
 }
-/* line 37, ../../app/styles/dashboard.scss */
+/* line 46, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .left-input-form input {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
   width: 80%;
+  margin: auto;
   height: 50px;
-  border: 1px solid black;
+  border: none;
+  border-bottom: 1px solid #62a0dc;
+  transition: border-bottom .1s, background-color .5s ease;
+  font-family: "Lato";
+  font-weight: 300;
+  color: black;
+  margin-top: 15px;
 }
-/* line 49, ../../app/styles/dashboard.scss */
+/* line 58, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .left-input-form input:focus {
+  outline: none;
+  border-bottom: 2px solid gold;
+  background-color: #fafafa;
+  color: black;
+}
+/* line 68, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container {
   display: flex;
   flex-direction: row;
   width: 80%;
   margin: auto;
-  margin-top: 1px;
+  margin-top: 20px;
 }
-/* line 55, ../../app/styles/dashboard.scss */
+/* line 74, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .search-button {
   display: flex;
   align-items: center;
   width: 50%;
-  background-color: white;
+  background-color: #9cd0f7;
   margin: auto;
   height: 50px;
   justify-content: center;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
-/* line 63, ../../app/styles/dashboard.scss */
+/* line 84, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .search-button button {
   border: none;
 }
-/* line 67, ../../app/styles/dashboard.scss */
+/* line 88, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .add-flight-button {
+  color: #9cd0f7;
   display: flex;
   align-items: center;
   width: 50%;
-  background-color: #ccc;
+  background-color: #62a0dc;
   height: 50px;
   justify-content: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
-/* line 74, ../../app/styles/dashboard.scss */
+/* line 98, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .add-flight-button button {
   border: none;
 }
-/* line 83, ../../app/styles/dashboard.scss */
+/* line 105, ../../app/styles/dashboard.scss */
+.dashboard .toggle-buttons-container .add-flight-button:hover {
+  background-color: white;
+}
+/* line 109, ../../app/styles/dashboard.scss */
+.dashboard .toggle-buttons-container .search-button {
+  background-color: white;
+}
+/* line 115, ../../app/styles/dashboard.scss */
 .dashboard .data-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* line 91, ../../app/styles/dashboard.scss */
+/* line 124, ../../app/styles/dashboard.scss */
 .dashboard .data-container .graph-container {
-  display: flex;
   height: 60vh;
-  background-color: #ccc;
   width: 100%;
-  align-items: center;
-  justify-content: center;
+  background-color: white;
 }
-/* line 99, ../../app/styles/dashboard.scss */
-.dashboard .data-container .graph-container .histogram {
-  margin-top: 500px;
-}
-/* line 102, ../../app/styles/dashboard.scss */
-.dashboard .data-container .graph-container rect {
-  fill: steelblue;
-  stroke: white;
-}
-/* line 106, ../../app/styles/dashboard.scss */
-.dashboard .data-container .graph-container line {
-  stroke: black;
-  shape-rendering: crispEdges;
-}
-/* line 114, ../../app/styles/dashboard.scss */
+/* line 132, ../../app/styles/dashboard.scss */
 .dashboard .data-container .data-table {
   height: 40vh;
-  background-color: white;
   width: 100%;
-  overflow: scroll;
-  display: flex;
-  flex-direction: column;
+  overflow-y: scroll;
 }
-/* line 121, ../../app/styles/dashboard.scss */
-.dashboard .data-container .data-table .table-header {
-  display: flex;
-  flex-direction: row;
-  margin: auto;
+/* line 140, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table table {
   width: 100%;
-  background-color: #e1e1e1;
-  height: 25px;
-  position: fixed;
-  margin-top: -25px;
 }
-/* line 130, ../../app/styles/dashboard.scss */
-.dashboard .data-container .data-table .table-header .column {
-  flex-wrap: wrap;
-  margin-right: 5%;
-  margin-left: 2%;
+/* line 144, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table thead {
+  background: linear-gradient(to bottom, rgba(130, 186, 233, 0.5), #82bae9);
 }

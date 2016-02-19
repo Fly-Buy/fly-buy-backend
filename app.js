@@ -25,7 +25,7 @@ app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
 //send server side log to browser
-var nodemonkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
+// var nodemonkey = require('node-monkey').start({host: "127.0.0.1", port:"50500"});
 
 // app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.set('trust proxy', 1) // trust first proxy
@@ -55,7 +55,7 @@ app.use(session({
   name: 'flybuy',
   store: new pgSession({
     pg : pg,                                                    // Use global pg-module
-    conString : process.env.DEV_DATABASE_URL,        // Connect using something else than default DATABASE_URL env variable
+    conString : process.env.DATABASE_URL,        // Connect using something else than default DATABASE_URL env variable
     tableName : 'session'                                      // Use another table-name than the default "session" one
   }),
   saveUninitialized: false,

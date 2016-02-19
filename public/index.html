@@ -8,9 +8,13 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css" />
+    <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/bootstrap.css -->
+
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,100,300|Lato:400,100,300,300italic,400italic,700,900,900italic" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -19,6 +23,7 @@
 
     <!-- build:css(.tmp) styles/custom.css -->
     <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="stylesheet" href="styles/dashboardMediaQueries.css">
     <link rel="stylesheet" href="styles/firstflight.css">
     <link rel="stylesheet" href="styles/hompageMediaQueries.css">
     <link rel="stylesheet" href="styles/firstflightMediaQueries.css">
@@ -33,18 +38,20 @@
     <!-- NAVIGATION -->
     <div class="header" ng-controller="NavCtrl">
       <nav class='nav-bar'>
-        <div class='nav-bar-left'>
-          <a ng-href='#/'>
-            <p class='nav-text'>Fly-Buy</p>
-          </a>
-        </div>
-        <div class='nav-bar-right'>
-          <a ng-href='#/firstflight'>
-            <p class='nav-text'>First Flight</p>
-          </a>
-          <a ng-href= "{{apihost}}/auth/logout">
-            <p class='nav-text'>Logout</p>
-          </a>
+        <div class="nav-components">
+          <div class="logo">
+            <a ng-href='#/'>
+              <p class='nav-text'>Fly-Buy</p>
+            </a>
+          </div>
+          <div class="links">
+            <a ng-href= "#/dashboard">
+              <p class='nav-text'>Dashboard</p>
+            </a>
+            <a ng-href= "{{apihost}}/auth/logout">
+              <p class='nav-text'>Logout</p>
+            </a>
+          </div>
         </div>
       </nav>
     </div>
@@ -80,6 +87,9 @@
     <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/nvd3/build/nv.d3.js"></script>
+    <script src="bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+    <script src="bower_components/ng-table/dist/ng-table.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -91,6 +101,8 @@
         <script src="scripts/services/api.js"></script>
         <script src="scripts/directives/validairport.js"></script>
         <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/services/graphs.js"></script>
+        <script src="scripts/services/d3.js"></script>
         <!-- endbuild -->
 </body>
 </html>
