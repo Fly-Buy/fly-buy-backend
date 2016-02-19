@@ -25,16 +25,16 @@
      <input tooltip-placement="right" uib-tooltip="Purchase Location" type="text" ng-model="dash.flightInfo.purchaseLocation" placeholder="Purchase Location" name="purchase_location" />
    </form>
     <div class="toggle-buttons-container">
-      <div class="search-button" form="flightinfoform" ng-click="dash.updateNewData()">
-        <h4>Clear</h4>
+      <div class="search-button clear" form="flightinfoform" ng-click="dash.updateNewData()">
+        <h4>Clear&nbsp;<i class="fa fa-times"></i></h4>
       </div>
       <div class="add-flight-button" form="flightinfoform" ng-disabled="dash.noResultsAirline || dash.noResultsDepAirport || dash.noResultsArrAirport" ng-click="dash.postFlight(dash.flightInfo)">
-        <h4>Add flight</h4>
+        <h4>Add&nbsp;<i class="fa fa-plus"></i></h4>
       </div>
     </div>
     <div class="toggle-buttons-container">
-      <a class="search-button" ng-href= "{{dash.apihost}}/auth/logout">Logout</a>
-      <a class="add-flight-button" ng-href='#/'>Home</a>
+      <a class="logout-button" ng-href= "{{dash.apihost}}/auth/logout">Logout</a>
+      <a class="home-button" ng-href='#/'>Home</a>
     </div>
   </div>
   <div class="data-container">
@@ -42,13 +42,8 @@
 
       <!-- Bar chart -->
       <nvd3 options="dash.options" data="dash.data" ng-show="dash.show"></nvd3>
-
-      <!-- <button ng-click="dash.show = !dash.show;">Pie Chart</button>
-      <button ng-click="">Bar Chart</button> -->
-
     </div>
       <div class="data-table">
-        <!-- <table class="table table-striped" ng-table="dash.tableParams" show-filter="false"> -->
           <table class="table table-striped">
           <thead>
             <tr>

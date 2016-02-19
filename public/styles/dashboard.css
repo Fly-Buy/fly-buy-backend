@@ -26,7 +26,7 @@
   font-weight: 300;
   color: #3a78b4;
   background: linear-gradient(to bottom, #9cd0f7, #62a0dc);
-  width: 400px;
+  width: 20%;
 }
 /* line 27, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .input-bar-header {
@@ -81,65 +81,164 @@
   display: flex;
   align-items: center;
   width: 50%;
-  background-color: #9cd0f7;
+  background-color: white;
   margin: auto;
   height: 50px;
   justify-content: center;
   border-top-left-radius: 25px;
-  border-bottom-left-radius: 25px;
+  border-bottom-left-radius: 0px;
+  color: #FF726D;
+  margin-bottom: -20px;
 }
-/* line 84, ../../app/styles/dashboard.scss */
+/* line 86, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .search-button button {
   border: none;
 }
-/* line 88, ../../app/styles/dashboard.scss */
+/* line 90, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .search-button:hover {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #FF726D;
+  margin: auto;
+  height: 50px;
+  justify-content: center;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 0px;
+  color: white;
+  margin-bottom: -20px;
+}
+/* line 102, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .search-button:hover button {
+  border: none;
+}
+/* line 106, ../../app/styles/dashboard.scss */
 .dashboard .left-input-bar .toggle-buttons-container .add-flight-button {
-  color: #9cd0f7;
+  color: #369965;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: white;
+  height: 50px;
+  justify-content: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 0px;
+  margin-bottom: -20px;
+}
+/* line 117, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .add-flight-button button {
+  border: none;
+}
+/* line 121, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .add-flight-button:hover {
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #369965;
+  height: 50px;
+  justify-content: center;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 0px;
+}
+/* line 132, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .logout-button {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #A5D5FF;
+  margin: auto;
+  height: 50px;
+  justify-content: center;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 25px;
+  color: white;
+}
+/* line 143, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .logout-button button {
+  border: none;
+}
+/* line 147, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .logout-button:hover {
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #62a0dc;
+  margin: auto;
+  height: 50px;
+  justify-content: center;
+  border-top-left-radius: 0  px;
+  border-bottom-left-radius: 25px;
+  color: white;
+}
+/* line 158, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .logout-button:hover button {
+  border: none;
+}
+/* line 162, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .home-button {
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 50%;
+  background-color: #A5D5FF;
+  height: 50px;
+  justify-content: center;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 25px;
+}
+/* line 172, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .home-button button {
+  border: none;
+}
+/* line 176, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .home-button:hover {
+  color: white;
   display: flex;
   align-items: center;
   width: 50%;
   background-color: #62a0dc;
   height: 50px;
   justify-content: center;
-  border-top-right-radius: 25px;
+  border-top-right-radius: 0px;
   border-bottom-right-radius: 25px;
 }
-/* line 98, ../../app/styles/dashboard.scss */
-.dashboard .left-input-bar .toggle-buttons-container .add-flight-button button {
+/* line 186, ../../app/styles/dashboard.scss */
+.dashboard .left-input-bar .toggle-buttons-container .home-button:hover button {
   border: none;
 }
-/* line 105, ../../app/styles/dashboard.scss */
+/* line 193, ../../app/styles/dashboard.scss */
 .dashboard .toggle-buttons-container .add-flight-button:hover {
   background-color: white;
 }
-/* line 109, ../../app/styles/dashboard.scss */
+/* line 197, ../../app/styles/dashboard.scss */
 .dashboard .toggle-buttons-container .search-button {
   background-color: white;
 }
-/* line 115, ../../app/styles/dashboard.scss */
+/* line 203, ../../app/styles/dashboard.scss */
 .dashboard .data-container {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-/* line 124, ../../app/styles/dashboard.scss */
+/* line 212, ../../app/styles/dashboard.scss */
 .dashboard .data-container .graph-container {
   height: 60vh;
   width: 100%;
   background-color: white;
 }
-/* line 132, ../../app/styles/dashboard.scss */
+/* line 220, ../../app/styles/dashboard.scss */
 .dashboard .data-container .data-table {
   height: 40vh;
   width: 100%;
   overflow-y: scroll;
 }
-/* line 140, ../../app/styles/dashboard.scss */
-.dashboard .data-container .data-table table {
+/* line 224, ../../app/styles/dashboard.scss */
+.dashboard .data-container .data-table .table {
   width: 100%;
 }
-/* line 144, ../../app/styles/dashboard.scss */
+/* line 227, ../../app/styles/dashboard.scss */
 .dashboard .data-container .data-table thead {
   background: linear-gradient(to bottom, rgba(130, 186, 233, 0.5), #82bae9);
 }
