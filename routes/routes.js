@@ -10,12 +10,9 @@ var knex = require('../local_modules/knex');
 function ensureAuthenticated(req, res, next) {
   console.log("ensureAuthenticated",req.isAuthenticated());
   if (process.env.testing == 'true' || req.isAuthenticated()) {
-    if (process.env.testing == 'true' || userEntryCheck(req.user.id) >= 1) {
-      return next();
-    }
-    res.redirect('/#/firstflight') // update this to redirect to first entry page when created (this likely will be a front-side redirect)
+    return next();
   }
-  res.send("Sign-in failed.");
+  res.redirect(process.env.FRONT_END + '/#/');
 }
 
 // this will be the pg/knex query on flights table returning # of rows
@@ -32,9 +29,14 @@ router.get('/', function(req, res){
   res.json({ title: 'Express' });
 });
 
+// route to test if the user is logged in or not
+router.get('/loggedin', function(req, res){
+  res.send(req.isAuthenticated() ? req.user : '0');
+});
+
 router.use('/airlines', airlines);
 router.use('/airports', airports);
-router.use('/flights', flights);
+router.use('/flights', ensureAuthenticated, flights);
 router.use('/userinfo', userinfo);
 
 router.get('/test', ensureAuthenticated, function(req, res){

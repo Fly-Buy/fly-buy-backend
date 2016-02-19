@@ -9,9 +9,11 @@
  */
 
 angular.module('flyBuyApp')
-  .controller('DashboardCtrl', function ($scope, $http, $location, api, graphs, d3) {
+  .controller('DashboardCtrl', function ($scope, $http, $location, api, graphs, d3, apihost) {
 
     var that = this;
+
+    this.apihost = apihost;
 
     this.dateFormat = api.dateFormat;
     this.flightDatePopupState = {opened: false};

@@ -3,7 +3,6 @@
     <h1 class='input-bar-header'>Search for a flight</h1>
     <p>Type into any field to begin</p>
     <form class="left-input-form" ng-model="dash.flightInfo" name="flightinfoform">
-     <input ng-click="dash.flightDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.flightDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Flight Date" type="text" ng-required="true" ng-model="dash.flightInfo.flightDate" ng-blur="dash.limitData(dash.flightInfo)" placeholder="Flight Date" name="flight_date" />
      <input tooltip-placement="right" uib-tooltip="Airline" type="text" ng-model="dash.flightInfo.Airline" ng-blur="dash.limitData(dash.flightInfo)" placeholder="Airline" uib-typeahead="airline as airline.name for airline in dash.airlines | filter:$viewValue | limitTo:8" typeahead-loading="dash.loadingLocations" typeahead-no-results="dash.noResultsAirline">
      <i ng-show="dash.loadingLocations" class="glyphicon glyphicon-refresh"></i>
      <div ng-show="dash.noResultsAirline">
@@ -19,16 +18,23 @@
      <div ng-show="dash.noResultsArrAirport">
        <i class="glyphicon glyphicon-remove"></i> No Results Found
      </div>
-     <input ng-click="dash.purchaseDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.purchaseDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Purchase Date" type="text" ng-model="dash.flightInfo.purchaseDate" placeholder="Purchase Date" name="purchase_date" />
-     <input tooltip-placement="right" uib-tooltip="Flight #" type="text" ng-model="dash.flightInfo.flightNum" placeholder="Flight Number" name="flight_number"/>
+     <input ng-click="dash.flightDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.flightDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Flight Date" type="text" ng-required="true" ng-model="dash.flightInfo.flightDate" ng-blur="dash.limitData(dash.flightInfo)" placeholder="Flight Date" name="flight_date" />
      <input tooltip-placement="right" uib-tooltip="Price ($)" type="number" ng-model="dash.flightInfo.pricePaid" ng-blur="dash.limitData(dash.flightInfo)" ng-required="true" placeholder="Price" name="price_paid" min="0" step="1" value="100"/>
+     <input tooltip-placement="right" uib-tooltip="Flight #" type="text" ng-model="dash.flightInfo.flightNum" placeholder="Flight Number" name="flight_number"/>
+     <input ng-click="dash.purchaseDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.purchaseDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Purchase Date" type="text" ng-model="dash.flightInfo.purchaseDate" placeholder="Purchase Date" name="purchase_date" />
      <input tooltip-placement="right" uib-tooltip="Purchase Location" type="text" ng-model="dash.flightInfo.purchaseLocation" placeholder="Purchase Location" name="purchase_location" />
    </form>
     <div class="toggle-buttons-container">
       <div class="search-button" form="flightinfoform" ng-click="dash.updateNewData()">
         <h4>Clear</h4>
       </div>
-      <input value="Add flight" type="submit" class="add-flight-button" form="flightinfoform" ng-disabled="dash.noResultsAirline || dash.noResultsDepAirport || dash.noResultsArrAirport" ng-click="dash.postFlight(dash.flightInfo)" />
+      <div class="add-flight-button" form="flightinfoform" ng-disabled="dash.noResultsAirline || dash.noResultsDepAirport || dash.noResultsArrAirport" ng-click="dash.postFlight(dash.flightInfo)">
+        <h4>Add flight</h4>
+      </div>
+    </div>
+    <div class="toggle-buttons-container">
+      <a class="search-button" ng-href= "{{dash.apihost}}/auth/logout">Logout</a>
+      <a class="add-flight-button" ng-href='#/'>Home</a>
     </div>
   </div>
   <div class="data-container">
