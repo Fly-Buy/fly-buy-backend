@@ -2,194 +2,65 @@
   <div class="left-input-bar">
     <h1 class='input-bar-header'>Search for a flight</h1>
     <p>Type into any field to begin</p>
-    <form class="left-input-form">
-      <input type="text" placeholder="Origin" />
-      <input type="text" placeholder="Destinstion" />
-      <input type="text" placeholder="Price" />
-      <input type="text" placeholder="Flight Date" />
-      <input type="text" placeholder="Purchase Date" />
-      <input type="text" placeholder="Purchase Location" />
-      <input type="text" placeholder="Flight Number" />
-      <input type="text" placeholder="Airline" />
-      <!-- <input type="submit" value="Submit Flight Info" class="enter-flight"> -->
-    </form>
+    <form class="left-input-form" ng-model="dash.flightInfo" name="flightinfoform">
+     <input ng-click="dash.flightDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.flightDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Flight Date" type="text" ng-required="true" ng-model="dash.flightInfo.flightDate" ng-blur="dash.limitData(dash.flightInfo)" placeholder="Flight Date" name="flight_date" />
+     <input tooltip-placement="right" uib-tooltip="Airline" type="text" ng-model="dash.flightInfo.Airline" ng-blur="dash.limitData(dash.flightInfo)" placeholder="Airline" uib-typeahead="airline as airline.name for airline in dash.airlines | filter:$viewValue | limitTo:8" typeahead-loading="dash.loadingLocations" typeahead-no-results="dash.noResultsAirline">
+     <i ng-show="dash.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="dash.noResultsAirline">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+     <input tooltip-placement="right" uib-tooltip="Departure Airport" type="text" ng-model="dash.flightInfo.DepartureAirport" ng-blur="dash.limitData(dash.flightInfo)" ng-required="true" placeholder="Departure Airport" uib-typeahead="airport as airport.name for airport in dash.airports | filter:$viewValue | limitTo:8" typeahead-loading="dash.loadingLocations" typeahead-no-results="dash.noResultsDepAirport">
+     <i ng-show="dash.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="dash.noResultsDepAirport">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+     <input tooltip-placement="right" uib-tooltip="Arrival Airport" type="text" ng-model="dash.flightInfo.ArrivalAirport" ng-blur="dash.limitData(dash.flightInfo)" ng-required="true" placeholder="Arrival Airport" uib-typeahead="airport as airport.name for airport in dash.airports | filter:$viewValue | limitTo:8" typeahead-loading="dash.loadingLocations" typeahead-no-results="dash.noResultsArrAirport">
+     <i ng-show="dash.loadingLocations" class="glyphicon glyphicon-refresh"></i>
+     <div ng-show="dash.noResultsArrAirport">
+       <i class="glyphicon glyphicon-remove"></i> No Results Found
+     </div>
+     <input ng-click="dash.purchaseDatePopup()" uib-datepicker-popup="{{dash.dateFormat}}" is-open="dash.purchaseDatePopupState.opened" datepicker-options="dateOptions" tooltip-placement="right" uib-tooltip="Purchase Date" type="text" ng-model="dash.flightInfo.purchaseDate" placeholder="Purchase Date" name="purchase_date" />
+     <input tooltip-placement="right" uib-tooltip="Flight #" type="text" ng-model="dash.flightInfo.flightNum" placeholder="Flight Number" name="flight_number"/>
+     <input tooltip-placement="right" uib-tooltip="Price ($)" type="number" ng-model="dash.flightInfo.pricePaid" ng-blur="dash.limitData(dash.flightInfo)" ng-required="true" placeholder="Price" name="price_paid" min="0" step="1" value="100"/>
+     <input tooltip-placement="right" uib-tooltip="Purchase Location" type="text" ng-model="dash.flightInfo.purchaseLocation" placeholder="Purchase Location" name="purchase_location" />
+   </form>
     <div class="toggle-buttons-container">
-      <div class="search-button">
-        <h4>Search</h4>
+      <div class="search-button" form="flightinfoform" ng-click="dash.updateNewData()">
+        <h4>Clear</h4>
       </div>
-      <div class="add-flight-button">
-        <h4>Add flight</h4>
-      </div>
+      <input value="Add flight" type="submit" class="add-flight-button" form="flightinfoform" ng-disabled="dash.noResultsAirline || dash.noResultsDepAirport || dash.noResultsArrAirport" ng-click="dash.postFlight(dash.flightInfo)" />
     </div>
   </div>
   <div class="data-container">
     <div class="graph-container">
-        <div class='histogram' style="width:80%" ></div>
-        <script>
-          // Generate an Irwin-Hall distribution.
-          function gen_ih_dist(trails, variables) {
-            data = [];
-            for (var i = 0; i < trails; i++) {
-              for (var s = 0, j = 0; j < variables; j++) {
-                s += Math.random();
-              }
-              data.push(s);
-            }
-            return data;
-          }
-          var div_name = "div.histogram";
-          pos_data = gen_ih_dist(300, 100);
-          neg_data = gen_ih_dist(0);
-          draw_histogram(div_name, pos_data, neg_data);
-          //The drawing of the histogram has been broken out from the data retrial
-          // or computation. (In this case the 'Irwin-Hall distribution' computation above)
-          function draw_histogram(reference, pos_data, neg_data){
-          $(reference).empty();
-          //The drawing code needs to reference a responsive elements dimneions
-          var width = $(reference).width();
-          console.log(width);
-          // var width = $(reference).empty().width(); we can chain for effeicanecy as jquery returns jquery.
-          var height = 250;  // We don't want the height to be responsive.
-          var histogram = d3.layout.histogram() (pos_data);
-          var neg_histogram = d3.layout.histogram()(neg_data);
-          var x = d3.scale.ordinal()
-            .domain(histogram.map(function(d) { return d.x; }))
-            .rangeRoundBands([0, width]);
-          var y = d3.scale.linear()
-            .domain([0, d3.max(histogram.map(function(d) { return d.y; }))])
-            .range([0, height]);
-          var ny = d3.scale.linear()
-            .domain([0, d3.max(neg_histogram.map(function(d) { return d.y; }))])
-            .range([0, height]);
-          var svg = d3.select(reference).append("svg")
-            .attr("width", width)
-            .attr("height", 3 * height);
-          svg.selectAll("rect")
-            .data(histogram)
-            .enter().append("rect")
-            .style("fill", "white")
-            .attr("width", 20)
-            .attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return height - y(d.y); })
-            .attr("height", function(d) { return y(d.y); });
-          svg.selectAll("rect-neg")
-            .data(neg_histogram)
-            .enter().append("rect")
-            .style("fill", "red")
-            .attr("width", x.rangeBand())
-            .attr("x", function(d) { return x(d.x); })
-            .attr("y", function(d) { return height})
-            .attr("height", function(d) { return ny(d.y); });
-          svg.append("line")
-            .attr("x1", 0)
-            .attr("x2", width)
-            .attr("y1", height)
-            .attr("y2", height);
-          };
-          var draw = function() {
-          draw_histogram(div_name, pos_data, neg_data);
-          };
-          $(window).resize(draw);
-        </script>
-      </div>
+
+      <!-- Bar chart -->
+      <nvd3 options="dash.options" data="dash.data" ng-show="dash.show"></nvd3>
+
+      <!-- <button ng-click="dash.show = !dash.show;">Pie Chart</button>
+      <button ng-click="">Bar Chart</button> -->
+
+    </div>
       <div class="data-table">
-        <div class="table-header">
-          <div class="column">
-            <p>Arrive</p>
-          </div>
-          <div class="column">
-            <p>Depart</p>
-          </div>
-          <div class="column">
-            <p>Price</p>
-          </div>
-          <div class="column">
-            <p>Date</p>
-          </div>
-          <div class="column">
-            <p>Purchase location</p>
-          </div>
-          <div class="column">
-            <p>Purchase Date</p>
-          </div>
-        </div>
-        <table>
-          <tbody>
+        <!-- <table class="table table-striped" ng-table="dash.tableParams" show-filter="false"> -->
+          <table class="table table-striped">
+          <thead>
             <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
+              <td ng-repeat="col in dash.sorting" ng-click="dash.sort(col)">{{col.name}}</td>
             </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-            <tr>
-              <td>MIA</td>
-              <td>LAX</td>
-              <td>10000</td>
-              <td>10/10/10</td>
-              <td>10/10/10</td>
-              <td>Expedia</td>
-            </tr>
-          </tbody>
+          </thead>
+          <tr class="" ng-repeat="flight in dash.row_data | orderBy:dash.SortOrder:dash.reverseSort">
+            <td title="'Airline'" x-sortable="'airline'">{{flight.icao}}<br>{{flight.airline}}</td>
+            <td title="'Departure'" x-sortable="'departure'">{{flight.departure}}</td>
+            <td title="'Arrival'" x-sortable="'arrival'">{{flight.arrival}}</td>
+            <td title="'Flight Date'" x-sortable="'flight_date'">{{flight.flight_date | date:'MM/dd/yyyy':'+0700'}}</td>
+            <td title="'Flight #'" x-sortable="'flight_number'">{{flight.flight_number}}</td>
+            <td title="'Price'" x-sortable="'price_paid'">{{flight.price_paid | currency:"$":0}}</td>
+            <td title="'Purchase Date'" x-sortable="'purchase_date'">{{flight.purchase_date | date:'MM/dd/yyyy':'+0700'}}</td>
+            <td title="'Purchase Location'" x-sortable="'purchase_location'">{{flight.purchase_location}}</td>
+            <td title="'Suspect?'" x-sortable="'suspect'">{{flight.suspect}}</td>
+          </tr>
         </table>
       </div>
     </div>
-  </div>
 </main>

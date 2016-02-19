@@ -8,44 +8,94 @@
 /* line 6, ../../app/styles/firstflight.scss */
 .first-flight-container .left-pane {
   width: 50%;
-  background-color: #e1e1e1;
+  background: linear-gradient(to right, #9cd0f7, #62a0dc);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-/* line 11, ../../app/styles/firstflight.scss */
+/* line 13, ../../app/styles/firstflight.scss */
 .first-flight-container .left-pane h1 {
-  height: 300px;
-  margin-top: 20%;
+  font-size: 1.5em;
+  color: white;
+  font-weight: 300;
+  margin: 5%;
+  margin-top: -145px;
 }
-/* line 15, ../../app/styles/firstflight.scss */
+/* line 20, ../../app/styles/firstflight.scss */
 .first-flight-container .left-pane h2 {
-  height: 300px;
+  font-size: 1.5em;
+  color: white;
+  font-weight: 300;
 }
-/* line 18, ../../app/styles/firstflight.scss */
+/* line 25, ../../app/styles/firstflight.scss */
 .first-flight-container .left-pane img {
-  height: 300px;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
 }
-/* line 22, ../../app/styles/firstflight.scss */
+/* line 33, ../../app/styles/firstflight.scss */
+.first-flight-container .left-pane p {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+/* line 38, ../../app/styles/firstflight.scss */
 .first-flight-container .right-pane {
   width: 50%;
   background-color: white;
   display: flex;
   flex-direction: column;
 }
-/* line 27, ../../app/styles/firstflight.scss */
+/* line 43, ../../app/styles/firstflight.scss */
 .first-flight-container .right-pane .first-flight-form {
-  margin-top: 15%;
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
-  height: 70vh;
+  height: 100%;
 }
-/* line 32, ../../app/styles/firstflight.scss */
+/* line 48, ../../app/styles/firstflight.scss */
 .first-flight-container .right-pane .first-flight-form input {
-  width: 60%;
+  width: 360px;
   margin: auto;
   height: 50px;
+  border: none;
+  border-bottom: 1px solid #62a0dc;
+  transition: border-bottom .1s, background-color .5s ease;
+  font-family: "Lato";
+  font-weight: 300;
+  color: black;
+  margin-top: 15px;
 }
-/* line 37, ../../app/styles/firstflight.scss */
-.first-flight-container .right-pane .first-flight-form button {
-  height: 50px;
+/* line 60, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form input:focus {
+  outline: none;
+  border-bottom: 2px solid gold;
+  background-color: #fafafa;
+  color: black;
+}
+/* line 66, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form .submit-flight {
+  font-family: 'Lato', sans-serif;
+  border: none;
+  background-color: white;
+  color: #62a0dc;
+  border: 1px solid #62a0dc;
+  border-radius: 30px;
+  margin: auto;
+  font-size: 1.25em;
+  padding: auto;
+  transition: color .5s ease, background-color .5s ease;
+  width: 350px;
+  height: 60px;
+  font-weight: 300;
+  margin-top: 70px;
+}
+/* line 82, ../../app/styles/firstflight.scss */
+.first-flight-container .right-pane .first-flight-form .submit-flight:hover {
+  background: white;
+  color: white;
+  background-color: #62a0dc;
 }
