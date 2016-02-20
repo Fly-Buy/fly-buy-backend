@@ -1,0 +1,24 @@
+/* line 1, ../../app/styles/table.scss */
+.table {
+  width: 100%;
+  overflow: scroll;
+}
+/* line 4, ../../app/styles/table.scss */
+.table td {
+  margin: auto;
+  max-width: 70px;
+  word-wrap: break-word;
+}
+/* line 9, ../../app/styles/table.scss */
+.table td:last-child {
+  border-right: 1px solid #e8e8e8;
+}
+/* line 12, ../../app/styles/table.scss */
+.table tr:nth-child(even) td {
+  background-color: #79b3e6;
+  color: white;
+}
+/* line 16, ../../app/styles/table.scss */
+.table tr:first-of-type {
+  background-color: #79b3e6;
+}
